@@ -200,8 +200,7 @@ const TEACHERS = [
     courseIds: ['matematike'],
     accent: 'linear-gradient(135deg,#d97706,#fbbf24)',
     note: 'Mësuese me eksperiencë mbi 35 vjeçare në mësimdhënie në një nga gjimnazet kryesore të qytetit. Puna e saj ka në qendër marrjen e njohurive themelore të matematikës dhe përgatitjen për provimin e maturës. Përdorimi i teksteve të larmishëm është një ndër parimet kryesore të saj.'
-  },
-  
+  }
 ];
 
 function escapeHtml(text) {
