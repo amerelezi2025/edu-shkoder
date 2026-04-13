@@ -201,16 +201,7 @@ const TEACHERS = [
     accent: 'linear-gradient(135deg,#d97706,#fbbf24)',
     note: 'Mësuese me eksperiencë mbi 35 vjeçare në mësimdhënie në një nga gjimnazet kryesore të qytetit. Puna e saj ka në qendër marrjen e njohurive themelore të matematikës dhe përgatitjen për provimin e maturës. Përdorimi i teksteve të larmishëm është një ndër parimet kryesore të saj.'
   },
-  {
-    name: 'Amer Elezi',
-    phone: '355696147703',
-    subject: 'Të Gjitha Lëndët',
-    maps: 'https://www.google.com/maps/place/Shkod%C3%ABr,+Albania/@42.0682,19.5126,14z',
-    courseIds: ['general-1-6','fillore-1-5','matematike','anglisht','gjermanisht','italisht','kimi-biologji','gjuhe-letersi','fizike'],
-    accent: 'linear-gradient(135deg,#FF6B35,#FFD166)',
-    featured: true,
-    note: 'Krijuesi i website-it. Kontaktoni për çdo informacion ose rezervim prove.'
-  }
+  
 ];
 
 function escapeHtml(text) {
