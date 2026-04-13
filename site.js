@@ -590,26 +590,9 @@ function switchTab(tab) {
 
 let reviewRating = 0;
 const REVIEWS_INBOX_PHONE = OWNER.phone;
-const APPROVED_REVIEWS = [
-  {
-    name: 'Elvira Haxhiu',
-    meta: 'Nënë e Ardianit, 16 vjeç',
-    rating: 5,
-    text: 'Djali im ka ndryshuar krejtësisht qëndrimin ndaj matematikës. Nga nota 5 ka arritur në 9 brenda tre muajsh. Mësuesi është i jashtëzakonshëm dhe shumë i durueshëm.'
-  },
-  {
-    name: 'Jon B.',
-    meta: 'Nxënës i gjuhës angleze',
-    rating: 5,
-    text: 'Më parë kisha frikë të flisja anglisht. Tani po komunikoj shumë më lirshëm dhe notat e mia janë përmirësuar ndjeshëm. Orët janë të qarta dhe shumë praktike.'
-  },
-  {
-    name: 'Prind i Sarës',
-    meta: 'Prind i nxënëses, klasa 9',
-    rating: 5,
-    text: 'Kursi i gjermanishtes i dha vajzës sime besim dhe disiplinë. Brenda pak javësh filloi të lexojë dhe të shkruajë më mirë se sa prisnim.'
-  }
-];
+
+// LISTA E KOMENTEVE TANI ESHTE BOSH
+const APPROVED_REVIEWS = [];
 
 const starPicker = document.getElementById('starPicker');
 starPicker.querySelectorAll('i').forEach(star => {
