@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduShkodër – Tutor 1 me 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #FF6B35;
+      --orange-dark: #e85820;
+      --orange-light: #ff8c5a;
+      --yellow: #FFD166;
+      --yellow-light: #ffe499;
+      --white: #FFFFFF;
+      --dark: #2D2D2D;
+      --gray: #6b7280;
+      --gray-light: #f8f7f5;
+      --gray-mid: #e8e6e1;
+      --shadow-sm: 0 2px 8px rgba(255,107,53,0.10);
+      --shadow-md: 0 6px 24px rgba(255,107,53,0.13);
+      --shadow-lg: 0 16px 48px rgba(255,107,53,0.16);
+      --radius: 14px;
+      --radius-lg: 22px;
+      --transition: all 0.28s cubic-bezier(.4,0,.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button, input, select, textarea { font-family: inherit; }
+    h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.22; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 900; }
+    h2 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 800; }
+    h3 { font-size: 1.2rem; font-weight: 700; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section-tag { display: inline-block; background: var(--yellow-light); color: var(--orange-dark); font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; margin-bottom: 14px; }
+    .section-title { margin-bottom: 10px; }
+    .section-subtitle { color: var(--gray); font-size: 1.05rem; max-width: 560px; }
+    .center-text { text-align: center; }
+    .center-text .section-subtitle { margin: 0 auto; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: var(--radius); font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: var(--transition); }
+    .btn-primary { background: var(--orange); color: var(--white); box-shadow: 0 4px 18px rgba(255,107,53,0.35); }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,53,0.42); }
+
+    /* NAVBAR */
+    #navbar { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1.5px solid var(--gray-mid); transition: box-shadow 0.3s; }
+    #navbar.scrolled { box-shadow: 0 4px 24px rgba(45,45,45,0.10); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 1.55rem; color: var(--dark); }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; color: var(--gray); padding: 8px 14px; border-radius: 10px; transition: var(--transition); }
+    .nav-links a:hover, .nav-links a.active { color: var(--orange); background: rgba(255,107,53,0.08); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: var(--dark); padding: 6px; }
+    .mobile-menu { display: none; flex-direction: column; gap: 2px; padding-bottom: 16px; }
+    .mobile-menu a { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1rem; color: var(--gray); padding: 12px 16px; border-radius: 10px; transition: var(--transition); }
+    .mobile-menu a:hover { color: var(--orange); background: rgba(255,107,53,0.08); }
+    .mobile-menu.open { display: flex; }
+
+    /* HERO */
+    #hero { min-height: 92vh; background: linear-gradient(135deg, #FF6B35 0%, #ff8c5a 35%, #FFD166 75%, #ffe8a0 100%); display: flex; align-items: center; position: relative; overflow: hidden; padding: 80px 0 60px; }
+    .hero-blobs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .hero-blob { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.12); }
+    .hero-blob-1 { width: 420px; height: 420px; top: -120px; right: -80px; }
+    .hero-blob-2 { width: 260px; height: 260px; bottom: -80px; left: 8%; }
+    .hero-blob-3 { width: 160px; height: 160px; top: 30%; left: 40%; background: rgba(255,255,255,0.07); }
+    .hero-dots { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(255,255,255,0.22) 1.5px, transparent 1.5px); background-size: 38px 38px; }
+    .hero-content { position: relative; z-index: 2; max-width: 640px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); border: 1.5px solid rgba(255,255,255,0.45); border-radius: 100px; padding: 7px 18px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.82rem; color: var(--white); margin-bottom: 26px; }
+    #hero h1 { color: var(--white); margin-bottom: 18px; text-shadow: 0 2px 12px rgba(45,45,45,0.12); }
+    .hero-sub { color: rgba(255,255,255,0.92); font-size: 1.15rem; max-width: 520px; margin-bottom: 36px; font-weight: 500; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
+    .btn-white { background: var(--white); color: var(--orange); font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem; padding: 13px 28px; border-radius: var(--radius); border: none; cursor: pointer; box-shadow: 0 4px 18px rgba(45,45,45,0.14); transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+    .btn-white:hover { background: var(--yellow); transform: translateY(-2px); }
+    .btn-outline-white { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.7); font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem; padding: 13px 28px; border-radius: var(--radius); cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+    .btn-outline-white:hover { background: var(--white); color: var(--orange); }
+    .hero-stats { display: flex; flex-wrap: wrap; gap: 28px; }
+    .hero-stat { text-align: center; }
+    .hero-stat-num { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 2rem; color: var(--white); line-height: 1; }
+    .hero-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.82); font-weight: 600; }
+    .hero-stat-divider { width: 1.5px; height: 40px; background: rgba(255,255,255,0.3); align-self: center; }
+    .hero-visual { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 40%; max-width: 420px; padding-right: 32px; display: flex; align-items: center; justify-content: center; }
+    .hero-card-float { background: rgba(255,255,255,0.97); border-radius: var(--radius-lg); padding: 30px 26px; box-shadow: 0 24px 64px rgba(45,45,45,0.18); width: 100%; animation: floatUp 3.5s ease-in-out infinite alternate; }
+    @keyframes floatUp { from { transform: translateY(0px); } to { transform: translateY(-14px); } }
+    .hc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .hc-icon { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--orange), var(--yellow)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--white); flex-shrink: 0; }
+    .hc-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+    .hc-sub { font-size: 0.75rem; color: var(--gray); font-weight: 500; }
+    .hc-courses { display: flex; flex-direction: column; gap: 9px; }
+    .hc-course { display: flex; align-items: center; gap: 10px; padding: 10px 13px; border-radius: 10px; background: var(--gray-light); font-size: 0.83rem; font-weight: 600; color: var(--dark); }
+    .hc-course i { color: var(--orange); font-size: 0.85rem; }
+    .hc-badge { margin-left: auto; background: var(--yellow-light); color: var(--orange-dark); font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; }
+
+    /* COURSES */
+    #courses { padding: 96px 0; background: var(--gray-light); }
+    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+    .course-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; }
+    .course-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .course-card-top { padding: 28px 26px 20px; background: linear-gradient(135deg, rgba(255,107,53,0.07) 0%, rgba(255,209,102,0.13) 100%); position: relative; }
+    .course-icon-wrap { width: 58px; height: 58px; border-radius: 15px; background: linear-gradient(135deg, var(--orange), var(--orange-light)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--white); margin-bottom: 16px; box-shadow: 0 6px 18px rgba(255,107,53,0.28); }
+    .course-category-label { position: absolute; top: 20px; right: 20px; background: var(--yellow); color: var(--dark); font-size: 0.68rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; font-family: 'Poppins', sans-serif; }
+    .course-card-top h3 { font-size: 1.05rem; color: var(--dark); margin-bottom: 4px; }
+    .course-card-body { padding: 20px 26px; flex: 1; display: flex; flex-direction: column; }
+    .course-desc { font-size: 0.87rem; color: var(--gray); margin-bottom: 16px; flex: 1; }
+    .course-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .course-meta-item { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 600; color: var(--gray); background: var(--gray-light); padding: 4px 10px; border-radius: 8px; }
+    .course-meta-item i { color: var(--orange); font-size: 0.72rem; }
+    .btn-course { width: 100%; background: transparent; color: var(--orange); border: 2px solid var(--orange); border-radius: var(--radius); padding: 11px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 7px; }
+    .btn-course:hover { background: var(--orange); color: var(--white); box-shadow: 0 6px 18px rgba(255,107,53,0.3); }
+
+    /* TEACHERS */
+    #teachers { padding: 96px 0; background: var(--white); }
+    .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 52px; }
+    .teacher-card { background: var(--white); border: 2px solid var(--gray-mid); border-radius: var(--radius-lg); padding: 32px 28px; transition: var(--transition); text-align: center; position: relative; overflow: hidden; }
+    .teacher-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange), var(--yellow)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+    .teacher-card:hover { border-color: var(--orange); box-shadow: var(--shadow-lg); transform: translateY(-5px); }
+    .teacher-card:hover::before { transform: scaleX(1); }
+    .teacher-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--yellow)); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 1.8rem; color: var(--white); margin: 0 auto 16px; box-shadow: 0 8px 24px rgba(255,107,53,0.3); }
+    .teacher-name { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 6px; }
+    .teacher-subject { display: inline-block; background: var(--yellow-light); color: var(--orange-dark); font-size: 0.75rem; font-weight: 700; padding: 3px 12px; border-radius: 100px; margin-bottom: 16px; font-family: 'Poppins', sans-serif; }
+    .teacher-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+    .teacher-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 10px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.78rem; border: none; cursor: pointer; transition: var(--transition); text-decoration: none; }
+    .teacher-btn-wa { background: #25D366; color: white; }
+    .teacher-btn-wa:hover { background: #1da851; transform: translateY(-1px); }
+    .teacher-btn-map { background: var(--gray-light); color: var(--dark); border: 1.5px solid var(--gray-mid); }
+    .teacher-btn-map:hover { border-color: var(--orange); color: var(--orange); background: rgba(255,107,53,0.06); }
+    .teacher-phone { font-size: 0.82rem; color: var(--gray); margin-bottom: 4px; }
+    .teacher-note { font-size: 0.78rem; color: var(--gray); min-height: 34px; margin-bottom: 4px; }
+    .teacher-flag { position: absolute; top: 18px; right: 18px; background: var(--orange); color: var(--white); font-size: 0.68rem; font-weight: 700; padding: 5px 10px; border-radius: 100px; font-family: 'Poppins', sans-serif; box-shadow: 0 6px 18px rgba(255,107,53,0.2); }
+    .teacher-card.featured { background: linear-gradient(180deg, #fffaf5 0%, var(--white) 100%); border-color: rgba(255,107,53,0.35); box-shadow: var(--shadow-md); }
+    .course-card.featured { border: 2px solid rgba(255,107,53,0.28); box-shadow: var(--shadow-md); }
+    .course-card-top.has-spotlight { padding-top: 58px; }
+    .course-spotlight { position: absolute; top: 18px; left: 20px; background: var(--orange); color: var(--white); font-size: 0.68rem; font-weight: 700; padding: 5px 10px; border-radius: 100px; font-family: 'Poppins', sans-serif; }
+
+    /* HOW IT WORKS */
+    #how { padding: 96px 0; background: var(--gray-light); }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 52px; left: calc(16.66% + 16px); right: calc(16.66% + 16px); height: 2px; background: linear-gradient(90deg, var(--orange), var(--yellow)); z-index: 0; }
+    .step-card { text-align: center; padding: 38px 26px; border-radius: var(--radius-lg); background: var(--white); border: 2px solid var(--gray-mid); transition: var(--transition); position: relative; z-index: 1; }
+    .step-card:hover { border-color: var(--orange); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .step-num { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--yellow)); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--white); margin: 0 auto 20px; box-shadow: 0 6px 18px rgba(255,107,53,0.3); }
+    .step-icon { font-size: 2.2rem; color: var(--orange); margin-bottom: 18px; }
+    .step-card h3 { margin-bottom: 10px; }
+    .step-card p { font-size: 0.9rem; color: var(--gray); }
+
+    /* BOOKING */
+    #booking { padding: 96px 0; background: var(--white); }
+    .booking-form-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); border: 2px solid var(--gray-mid); max-width: 760px; margin: 0 auto; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-group label { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.82rem; color: var(--dark); }
+    .form-group input, .form-group select { padding: 11px 14px; border: 1.8px solid var(--gray-mid); border-radius: 10px; font-size: 0.9rem; color: var(--dark); background: var(--white); transition: var(--transition); outline: none; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,107,53,0.1); }
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .checkbox-label { display: flex; align-items: center; gap: 7px; background: var(--gray-light); border: 1.5px solid var(--gray-mid); border-radius: 8px; padding: 7px 13px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: var(--transition); user-select: none; }
+    .checkbox-label input { accent-color: var(--orange); }
+    .checkbox-label.checked { border-color: var(--orange); background: rgba(255,107,53,0.08); color: var(--orange-dark); }
+
+    /* Teacher picker */
+    .teacher-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px; }
+    .teacher-pick-card { border: 2px solid var(--gray-mid); border-radius: var(--radius); padding: 16px 12px; cursor: pointer; transition: var(--transition); text-align: center; position: relative; background: var(--white); }
+    .teacher-pick-card:hover { border-color: var(--orange-light); background: rgba(255,107,53,0.03); }
+    .teacher-pick-card.selected { border-color: var(--orange); background: rgba(255,107,53,0.07); box-shadow: 0 0 0 3px rgba(255,107,53,0.12); }
+    .teacher-pick-card.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+    .tp-avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--yellow)); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--white); margin: 0 auto 10px; }
+    .tp-name { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--dark); margin-bottom: 4px; }
+    .tp-subj { font-size: 0.7rem; color: var(--gray); font-weight: 600; }
+    .tp-check { position: absolute; top: 8px; right: 8px; width: 20px; height: 20px; border-radius: 50%; background: var(--orange); display: none; align-items: center; justify-content: center; color: white; font-size: 0.65rem; }
+    .teacher-pick-card.selected .tp-check { display: flex; }
+
+    .btn-submit-wa { width: 100%; background: #25D366; color: var(--white); border: none; border-radius: var(--radius); padding: 15px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.02rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(37,211,102,0.32); margin-top: 8px; }
+    .btn-submit-wa:hover { background: #1da851; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.4); }
+    .btn-submit-wa:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .form-note { font-size: 0.78rem; color: var(--gray); text-align: center; margin-top: 10px; }
+    .booking-route-note { margin-top: 12px; padding: 11px 14px; border-radius: 10px; border: 1.5px solid var(--gray-mid); background: var(--gray-light); font-size: 0.82rem; color: var(--gray); }
+
+    /* =============================================
+       REVIEWS — UNIFIED SECTION (komente + testimonials)
+       ============================================= */
+    #reviews { padding: 96px 0; background: var(--gray-light); }
+
+    /* Tab switcher */
+    .reviews-tabs { display: flex; gap: 0; border: 2px solid var(--gray-mid); border-radius: 14px; overflow: hidden; max-width: 380px; margin: 0 auto 48px; }
+    .reviews-tab { flex: 1; padding: 11px 18px; background: var(--white); border: none; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--gray); cursor: pointer; transition: var(--transition); }
+    .reviews-tab.active { background: var(--orange); color: var(--white); }
+
+    /* Panel wrapper */
+    .reviews-panel { display: none; }
+    .reviews-panel.active { display: block; }
+
+    /* Write + read layout */
+    .reviews-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 52px; align-items: start; }
+    .reviews-list { display: flex; flex-direction: column; gap: 18px; }
+    .review-card { background: var(--white); border: 2px solid var(--gray-mid); border-radius: var(--radius-lg); padding: 24px 22px; transition: var(--transition); }
+    .review-card:hover { border-color: var(--yellow); box-shadow: var(--shadow-sm); }
+    .review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .review-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--yellow)); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--white); flex-shrink: 0; }
+    .review-name { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.9rem; }
+    .review-date { font-size: 0.72rem; color: var(--gray); }
+    .review-stars { display: flex; gap: 2px; margin-bottom: 8px; }
+    .review-stars i { color: var(--yellow); font-size: 0.85rem; }
+    .review-stars i.empty { color: var(--gray-mid); }
+    .review-text { font-size: 0.87rem; color: var(--gray); line-height: 1.65; font-style: italic; }
+    .review-form-card { background: var(--white); border-radius: var(--radius-lg); padding: 32px 28px; box-shadow: var(--shadow-md); position: sticky; top: 100px; }
+    .review-form-card h3 { margin-bottom: 22px; }
+    .star-picker { display: flex; gap: 6px; margin-top: 4px; }
+    .star-picker i { font-size: 1.6rem; color: var(--gray-mid); cursor: pointer; transition: color 0.15s; }
+    .star-picker i.active { color: var(--yellow); }
+    .btn-review-submit { width: 100%; background: linear-gradient(135deg, var(--orange), var(--orange-light)); color: var(--white); border: none; border-radius: var(--radius); padding: 13px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; }
+    .btn-review-submit:hover { background: linear-gradient(135deg, var(--orange-dark), var(--orange)); transform: translateY(-2px); }
+    .reviews-note { font-size: 0.8rem; color: var(--gray); line-height: 1.6; margin-top: 2px; }
+    .empty-reviews { text-align: center; padding: 40px 20px; color: var(--gray); }
+    .empty-reviews i { font-size: 2.5rem; color: var(--gray-mid); margin-bottom: 12px; display: block; }
+
+    /* Testimonials grid (inside panel) */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testi-card { background: var(--white); border: 2px solid var(--gray-mid); border-radius: var(--radius-lg); padding: 32px 28px; transition: var(--transition); }
+    .testi-card:hover { border-color: var(--yellow); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .testi-quote { font-size: 2.8rem; color: var(--yellow); font-family: 'Poppins', sans-serif; font-weight: 900; line-height: 0.8; margin-bottom: 16px; }
+    .testi-text { font-size: 0.91rem; color: var(--gray); font-style: italic; margin-bottom: 22px; line-height: 1.7; }
+    .stars { display: flex; gap: 3px; margin-bottom: 18px; }
+    .stars i { color: var(--yellow); font-size: 0.92rem; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--yellow)); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--white); flex-shrink: 0; }
+    .testi-name { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.93rem; }
+    .testi-role { font-size: 0.77rem; color: var(--gray); }
+
+    /* JOIN */
+    #join { padding: 96px 0; background: linear-gradient(180deg, #fff8f1 0%, var(--white) 100%); }
+    .join-layout { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 28px; margin-top: 48px; align-items: stretch; }
+    .join-info-card { background: linear-gradient(135deg, rgba(255,107,53,0.09), rgba(255,209,102,0.18)); border: 2px solid rgba(255,107,53,0.14); border-radius: var(--radius-lg); padding: 34px 28px; box-shadow: var(--shadow-sm); }
+    .join-info-card h3 { margin-bottom: 12px; }
+    .join-info-card p { color: var(--gray); font-size: 0.95rem; }
+    .join-list { display: flex; flex-direction: column; gap: 14px; margin-top: 22px; }
+    .join-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; color: var(--dark); }
+    .join-list i { color: var(--orange); margin-top: 4px; font-size: 0.95rem; }
+    .join-owner-box { margin-top: 24px; padding: 18px 18px 16px; border-radius: 16px; background: rgba(255,255,255,0.88); border: 1.5px solid rgba(255,107,53,0.12); }
+    .join-owner-box strong { display: block; font-family: 'Poppins', sans-serif; font-size: 0.95rem; margin-bottom: 6px; }
+    .contact-chip-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .contact-chip { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 100px; background: var(--gray-light); border: 1.5px solid var(--gray-mid); font-size: 0.84rem; font-weight: 700; color: var(--dark); transition: var(--transition); }
+    .contact-chip:hover { color: var(--orange); border-color: var(--orange); background: rgba(255,107,53,0.05); }
+
+    /* CONTACT */
+    #contact { padding: 96px 0; background: var(--white); }
+    .contact-form-card { background: var(--white); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-md); max-width: 600px; margin: 48px auto 0; }
+    .contact-form-card h3 { margin-bottom: 24px; }
+    .contact-form-grid { display: flex; flex-direction: column; gap: 16px; }
+    .form-group textarea { padding: 11px 14px; border: 1.8px solid var(--gray-mid); border-radius: 10px; font-size: 0.9rem; color: var(--dark); background: var(--white); transition: var(--transition); outline: none; resize: vertical; min-height: 110px; }
+    .form-group textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,107,53,0.1); }
+    .success-msg { display: none; background: linear-gradient(135deg, #d1fae5, #a7f3d0); border: 1.5px solid #34d399; border-radius: var(--radius); padding: 20px 24px; text-align: center; color: #065f46; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.95rem; margin-top: 16px; }
+    .success-msg i { font-size: 1.8rem; margin-bottom: 8px; color: #059669; display: block; }
+    .btn-submit { width: 100%; background: linear-gradient(135deg, var(--orange), var(--orange-light)); color: var(--white); border: none; border-radius: var(--radius); padding: 14px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 9px; box-shadow: 0 6px 20px rgba(255,107,53,0.32); margin-top: 8px; }
+    .btn-submit:hover { background: linear-gradient(135deg, var(--orange-dark), var(--orange)); transform: translateY(-2px); }
+
+    /* FOOTER */
+    #footer { background: var(--dark); color: var(--white); padding: 64px 0 28px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1.5px solid rgba(255,255,255,0.1); }
+    .footer-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 1.55rem; margin-bottom: 16px; }
+    .footer-logo span { color: var(--orange); }
+    .footer-desc { font-size: 0.87rem; color: rgba(255,255,255,0.5); max-width: 280px; line-height: 1.7; }
+    .footer-socials { display: flex; gap: 10px; margin-top: 22px; }
+    .footer-social { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; color: rgba(255,255,255,0.6); transition: var(--transition); }
+    .footer-social:hover { background: var(--orange); color: var(--white); transform: translateY(-2px); }
+    .footer-col h4 { font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 18px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 0.85rem; color: rgba(255,255,255,0.46); transition: var(--transition); }
+    .footer-col ul li a:hover { color: var(--orange); padding-left: 4px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 24px; }
+    .footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.32); }
+    .footer-copy span { color: var(--orange); }
+
+    /* WHATSAPP */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; color: var(--white); box-shadow: 0 6px 24px rgba(37,211,102,0.45); transition: var(--transition); cursor: pointer; }
+    .whatsapp-float:hover { transform: scale(1.1) translateY(-3px); }
+    .whatsapp-tooltip { position: fixed; bottom: 42px; right: 96px; z-index: 998; background: var(--dark); color: var(--white); font-family: 'Poppins', sans-serif; font-size: 0.77rem; font-weight: 600; padding: 7px 14px; border-radius: 8px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.22s; }
+    .whatsapp-float:hover + .whatsapp-tooltip { opacity: 1; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.34s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-visual { display: none; }
+      .courses-grid { grid-template-columns: repeat(2, 1fr); }
+      .teachers-grid { grid-template-columns: repeat(2, 1fr); }
+      .teacher-picker { grid-template-columns: repeat(2, 1fr); }
+      .reviews-layout { grid-template-columns: 1fr; }
+      .review-form-card { position: static; }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .join-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta-desktop { display: none; }
+      .nav-hamburger { display: block; }
+      .courses-grid { grid-template-columns: 1fr; }
+      .teachers-grid { grid-template-columns: 1fr; }
+      .teacher-picker { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 18px; }
+      .hero-stat-divider { display: none; }
+      #hero { padding: 60px 0 48px; min-height: auto; }
+      .booking-form-card { padding: 24px 18px; }
+      .reviews-tabs { max-width: 100%; }
+      .contact-chip-wrap { justify-content: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn-white, .hero-btns .btn-outline-white { width: 100%; justify-content: center; }
+      .teacher-picker { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Edu<span>Shkodër</span></a>
+      <ul class="nav-links">
+        <li><a href="#courses">Kurset</a></li>
+        <li><a href="#teachers">Mësuesit</a></li>
+        <li><a href="#booking">Rezervo</a></li>
+        <li><a href="#join">Bëhu Mësues</a></li>
+        <li><a href="#reviews">Komente</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+      <div class="nav-cta-desktop" style="display:flex;align-items:center;">
+        <a href="#booking" class="btn btn-primary" style="padding:10px 22px;font-size:0.86rem;">
+          <i class="fas fa-calendar-check"></i> Rezervo Tani
+        </a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#courses">Kurset</a>
+      <a href="#teachers">Mësuesit</a>
+      <a href="#booking">Rezervo</a>
+      <a href="#join">Bëhu Mësues</a>
+      <a href="#reviews">Komente</a>
+      <a href="#contact">Kontakt</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blobs">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+    <div class="hero-dots"></div>
+  </div>
+  <div class="container" style="width:100%;position:relative;z-index:2;">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-star"></i> Tutor 1 me 1 në Shkodër
+      </div>
+      <h1>Mëso Më Shumë,<br>Arri Më Lart</h1>
+      <p class="hero-sub">
+        Mësime private 1 me 1 me mësues të zgjedhur prej jush. Orare fleksibël, vëmendje e plotë, rezultate të dukshme.
+      </p>
+      <div class="hero-btns">
+        <a href="#courses" class="btn-white"><i class="fas fa-book-open"></i> Shiko Kurset</a>
+        <a href="#booking" class="btn-outline-white"><i class="fas fa-user-plus"></i> Rezervo Tani</a>
+      </div>
+      <div class="hero-stats">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="container">
+    <div class="center-text reveal">
+      <span class="section-tag">Eksploroni</span>
+      <h2 class="section-title">Kurset Tona</h2>
+      <p class="section-subtitle">Të gjitha kurset zhvillohen si mësime private 1 me 1 — vëmendje e plotë vetëm për ju.</p>
+    </div>
+    <div class="courses-grid" id="coursesGrid"></div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="teachers">
+  <div class="container">
+    <div class="center-text reveal">
+      <span class="section-tag">Ekipi Ynë</span>
+      <h2 class="section-title">Mësuesit Tanë</h2>
+      <p class="section-subtitle">Zgjidhni mësuesin/en tuaj dhe kontaktojini drejtpërdrejt për të rezervuar orarin.</p>
+    </div>
+    <div class="teachers-grid" id="teachersGrid"></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="center-text reveal">
+      <span class="section-tag">I Thjeshtë</span>
+      <h2 class="section-title">Si Funksionon?</h2>
+      <p class="section-subtitle">Tre hapa të shkurtër dhe nxënësi juaj fillon menjëherë.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <div class="step-icon"><i class="fas fa-search"></i></div>
+        <h3>Zgjedh Kursin</h3>
+        <p>Shfletoni kurset tona dhe zgjidhni lëndën që nevojitet.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <div class="step-icon"><i class="fas fa-user-check"></i></div>
+        <h3>Zgjedh Mësuesin</h3>
+        <p>Zgjidhni mësuesin/en tuaj dhe plotësoni orarin e preferuar në formular.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <div class="step-icon"><i class="fab fa-whatsapp"></i></div>
+        <h3>Konfirmo me WhatsApp</h3>
+        <p>Kërkesa juaj dërgohet direkt tek mësuesi/ja nëpërmjet WhatsApp. Konfirmoni dhe filloni!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <div class="center-text reveal" style="margin-bottom:48px;">
+      <span class="section-tag">Rezervim i Lehtë</span>
+      <h2 class="section-title">Rezervo një Orar</h2>
+      <p class="section-subtitle">Plotësoni të dhënat, zgjidhni mësuesin dhe kërkesa dërgohet direkt në WhatsApp.</p>
+    </div>
+    <div class="booking-form-card reveal">
+      <h3 style="margin-bottom:24px;"><i class="fas fa-calendar-plus" style="color:var(--orange);margin-right:8px;"></i>Forma e Rezervimit</h3>
+      <div class="form-grid" id="bookingForm">
+
+        <div class="form-group">
+          <label for="studentName">Emri i Nxënësit *</label>
+          <input type="text" id="studentName" placeholder="p.sh. Ardi Marku" />
+        </div>
+        <div class="form-group">
+          <label for="studentPhone">Nr. Telefonit (opsional)</label>
+          <input type="tel" id="studentPhone" placeholder="+355 6X XXX XXXX" />
+        </div>
+
+        <div class="form-group full">
+          <label for="preferredCourse">Kursi i Preferuar *</label>
+          <select id="preferredCourse"></select>
+        </div>
+
+        <div class="form-group full">
+          <label>Pyetje shtesë: Çfarë vështirësish ke? *</label>
+          <input type="text" id="difficulty" placeholder="p.sh. Kemi problem me ekuacionet dhe gjeometrinë" />
+        </div>
+
+        <div class="form-group full">
+          <label>Pyetje shtesë: Cili është qëllimi kryesor? *</label>
+          <select id="goal">
+            <option value="" disabled selected>— Zgjidhni —</option>
+            <option>Përgatitje për maturë shtetërore</option>
+            <option>Përmirësim i notave</option>
+            <option>Olimpiadë / konkurs</option>
+            <option>Mësim i gjuhës nga zero</option>
+            <option>Tjetër</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label>Ditët e Preferuara *</label>
+          <div class="checkbox-group" id="daysGroup">
+            <label class="checkbox-label"><input type="checkbox" name="day" value="Hënë" /> Hënë</label>
+            <label class="checkbox-label"><input type="checkbox" name="day" value="Martë" /> Martë</label>
+            <label class="checkbox-label"><input type="checkbox" name="day" value="Mërkurë" /> Mërkurë</label>
+            <label class="checkbox-label"><input type="checkbox" name="day" value="Enjte" /> Enjte</label>
+            <label class="checkbox-label"><input type="checkbox" name="day" value="Premte" /> Premte</label>
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label for="schedule">Orari i Preferuar *</label>
+          <select id="schedule">
+            <option value="" disabled selected>— Zgjidhni —</option>
+            <option>Paradite (08:00 – 13:00)</option>
+            <option>Pasdite (14:00 – 19:00)</option>
+            <option>Mbrëmje (19:00 – 21:00)</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label style="margin-bottom:10px;">Zgjidhni Mësuesin/en *</label>
+          <div class="teacher-picker" id="teacherPicker"></div>
+          <div class="booking-route-note" id="bookingRouteNote">Kërkesa do të dërgohet direkt te mësuesi/ja që zgjidhni. Nëse mungon numri direkt, kërkesa shkon te krijuesi i website-it.</div>
+        </div>
+
+        <div class="full">
+          <button class="btn-submit-wa" id="sendWhatsApp" disabled onclick="sendToWhatsApp()">
+            <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i> Dërgo Kërkesën në WhatsApp
+          </button>
+          <p class="form-note"><i class="fas fa-lock" style="margin-right:4px;"></i> Kërkesa dërgohet direkt tek mësuesi/ja që zgjidhni.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     REVIEWS — SEKSIONI I BASHKUAR (Komente + Çfarë Thonë Prindërit)
+     ================================================================ -->
+<section id="reviews">
+  <div class="container">
+    <div class="center-text reveal">
+      <span class="section-tag">Komentet</span>
+      <h2 class="section-title">Çfarë Thonë Prindërit &amp; Nxënësit</h2>
+      <p class="section-subtitle">Lexoni komentet e verifikuara dhe dërgojeni vlerësimin tuaj në WhatsApp për publikim pas miratimit.</p>
+    </div>
+
+    <!-- TAB SWITCHER -->
+    <div class="reviews-tabs reveal">
+      <button class="reviews-tab active" onclick="switchTab('write')">
+        <i class="fas fa-pen" style="margin-right:6px;"></i>Lini Koment
+      </button>
+      <button class="reviews-tab" onclick="switchTab('testimonials')">
+        <i class="fas fa-quote-left" style="margin-right:6px;"></i>Çfarë Thonë
+      </button>
+    </div>
+
+    <!-- PANEL 1: shkruaj + lexo komente -->
+    <div class="reviews-panel active" id="panelWrite">
+      <div class="reviews-layout">
+        <div>
+          <p class="form-note" style="text-align:left;margin:0 0 16px;">
+            <i class="fas fa-shield-alt" style="margin-right:6px;color:var(--orange);"></i>
+            Komentet më poshtë janë komente të verifikuara që janë miratuar për publikim.
+          </p>
+          <div class="reviews-list" id="reviewsList">
+            <!-- rendered by JS -->
+          </div>
+        </div>
+        <div class="review-form-card reveal">
+          <h3><i class="fas fa-paper-plane" style="color:var(--orange);margin-right:8px;"></i>Dërgoni Vlerësimin</h3>
+          <div class="contact-form-grid" style="gap:14px;">
+            <div class="form-group">
+              <label>Emri juaj *</label>
+              <input type="text" id="reviewName" placeholder="p.sh. Arben Marku" />
+            </div>
+            <div class="form-group">
+              <label>Ju jeni *</label>
+              <select id="reviewRole">
+                <option value="" disabled selected>— Zgjidhni —</option>
+                <option>Prind / Kujdestar</option>
+                <option>Nxënës / Nxënëse</option>
+                <option>Ish-nxënës / Ish-nxënëse</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Vlerësimi *</label>
+              <div class="star-picker" id="starPicker">
+                <i class="fas fa-star" data-val="1"></i>
+                <i class="fas fa-star" data-val="2"></i>
+                <i class="fas fa-star" data-val="3"></i>
+                <i class="fas fa-star" data-val="4"></i>
+                <i class="fas fa-star" data-val="5"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Komenti juaj *</label>
+              <textarea id="reviewText" rows="4" placeholder="Ndani përvojën tuaj..."></textarea>
+            </div>
+            <button class="btn-review-submit" onclick="submitReview()">
+              <i class="fab fa-whatsapp"></i> Dërgo në WhatsApp
+            </button>
+            <p class="reviews-note">
+              Në faqen live, komentet e reja nuk mund të publikohen automatikisht pa databazë. Kjo formë i dërgon në WhatsApp që të verifikohen dhe të shtohen në faqe si komente publike.
+            </p>
+            <div id="reviewSuccess" class="success-msg">
+              <i class="fas fa-check-circle"></i>
+              Komenti juaj u përgatit për WhatsApp. Ju lutem shtypni “Send” në WhatsApp që të na mbërrijë.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 2: testimonials të paracaktuara -->
+    <div class="reviews-panel" id="panelTestimonials">
+      <div class="testimonials-grid">
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Djali im ka ndryshuar krejtësisht qëndrimin ndaj matematikës. Nga nota 5 ka arritur në 9 brenda tre muajsh. Mësuesi është i jashtëzakonshëm dhe shumë i durueshëm.</p>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="testi-author">
+            <div class="testi-avatar">E</div>
+            <div>
+              <div class="testi-name">Elvira Haxhiu</div>
+              <div class="testi-role">Nënë e Ardianit, 16 vjeç</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Vajza ime filloi anglishten pa ditur asnjë fjalë. Tani pas 6 muajsh flet rrjedhshëm dhe kaloi provimin Cambridge. Shumë i kënaqur me mësimdhënien.</p>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="testi-author">
+            <div class="testi-avatar">B</div>
+            <div>
+              <div class="testi-name">Besnik Leka</div>
+              <div class="testi-role">Baba i Miriamit, 13 vjeç</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-3">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Kursi i kimisë e ndihmoi shumë fëmijën tim të kalojë maturën me notë të lartë. Atmosfera gjatë mësimit është shumë motivuese. Rekomandoj fuqimisht!</p>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <div class="testi-author">
+            <div class="testi-avatar">M</div>
+            <div>
+              <div class="testi-name">Mirela Gjokaj</div>
+              <div class="testi-role">Nënë e Klaudios, 18 vjeç</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- JOIN TEACHERS -->
+<section id="join">
+  <div class="container">
+    <div class="center-text reveal">
+      <span class="section-tag">Mësues të Rinj</span>
+      <h2 class="section-title">Shto Profilin Tënd në Website</h2>
+      <p class="section-subtitle">Nëse je mësues/e dhe dëshiron të shfaqesh në këtë website, plotëso të dhënat më poshtë dhe ato dërgohen direkt te krijuesi i faqes.</p>
+    </div>
+    <div class="join-layout">
+      <div class="join-info-card reveal">
+        <h3><i class="fas fa-user-plus" style="color:var(--orange);margin-right:8px;"></i>Si funksionon?</h3>
+        <p>Kjo pjesë është shtuar enkas që mësues të rinj të vendosin të dhënat e tyre dhe të shtohen më pas në website.</p>
+        <ul class="join-list">
+          <li><i class="fas fa-check-circle"></i><span>Vendos emrin, lëndën, numrin e WhatsApp-it dhe linkun e vendndodhjes.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Kërkesa shkon direkt te krijuesi i website-it për shqyrtim dhe shtim në faqe.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Nëse do, mund të shtosh edhe klasat që mbulon ose shënime të tjera të rëndësishme.</span></li>
+        </ul>
+        <div class="join-owner-box">
+          <strong>Kontakti i krijuesit të website-it</strong>
+          <p>Numri për komunikim dhe pranimin e kërkesave të reja është:</p>
+          <div class="contact-chip-wrap">
+            <a href="https://wa.me/355696147703" target="_blank" class="contact-chip">
+              <i class="fab fa-whatsapp"></i> +355 69 614 7703
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="booking-form-card join-form-card reveal">
+        <h3 style="margin-bottom:24px;"><i class="fas fa-address-card" style="color:var(--orange);margin-right:8px;"></i>Forma për Mësues të Rinj</h3>
+        <div class="form-grid" id="joinTeacherForm">
+          <div class="form-group">
+            <label for="joinName">Emri dhe Mbiemri *</label>
+            <input type="text" id="joinName" placeholder="p.sh. Ana Kola" />
+          </div>
+          <div class="form-group">
+            <label for="joinPhone">Nr. WhatsApp *</label>
+            <input type="tel" id="joinPhone" placeholder="+355 6X XXX XXXX" />
+          </div>
+          <div class="form-group">
+            <label for="joinSubject">Lënda / Klasat *</label>
+            <input type="text" id="joinSubject" placeholder="p.sh. Matematikë, Klasa 6-9" />
+          </div>
+          <div class="form-group">
+            <label for="joinMaps">Link i Vendndodhjes *</label>
+            <input type="url" id="joinMaps" placeholder="https://maps.google.com/..." />
+          </div>
+          <div class="form-group full">
+            <label for="joinNotes">Shënime shtesë</label>
+            <textarea id="joinNotes" rows="5" placeholder="Shkruani informacion shtesë, p.sh. vetëm online, klasat që mbuloni, etj."></textarea>
+          </div>
+          <div class="full">
+            <button type="button" class="btn-submit-wa" onclick="sendTeacherApplication()">
+              <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i> Dërgo të Dhënat në WhatsApp
+            </button>
+            <p class="form-note">Të dhënat shkojnë direkt te krijuesi i website-it në numrin +355 69 614 7703.</p>
+            <div id="joinSuccess" class="success-msg">
+              <i class="fas fa-check-circle"></i>
+              Kërkesa u përgatit për WhatsApp. Ju lutem shtypni “Send” që të mbërrijë te krijuesi i website-it.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="center-text reveal">
+      <span class="section-tag">Pyetje?</span>
+      <h2 class="section-title">Na Kontaktoni</h2>
+      <p class="section-subtitle">Keni pyetje të tjera? Na shkruani dhe do ju përgjigjemi sa më shpejt.</p>
+    </div>
+    <div class="contact-chip-wrap" style="justify-content:center;">
+      <a href="https://wa.me/355696147703" target="_blank" class="contact-chip">
+        <i class="fab fa-whatsapp"></i> +355 69 614 7703
+      </a>
+      <span class="contact-chip"><i class="fas fa-user-gear"></i> Krijuesi i website-it</span>
+    </div>
+    <div class="contact-form-card reveal">
+      <h3><i class="fas fa-paper-plane" style="color:var(--orange);margin-right:8px;"></i>Dërgoni një Mesazh</h3>
+      <div id="contactForm" class="contact-form-grid">
+        <div class="form-group">
+          <label for="cName">Emri Juaj *</label>
+          <input type="text" id="cName" placeholder="p.sh. Andi Marku" required />
+        </div>
+        <div class="form-group">
+          <label for="cPhone">Nr. Telefonit</label>
+          <input type="tel" id="cPhone" placeholder="+355 6X XXX XXXX" />
+        </div>
+        <div class="form-group">
+          <label for="cMsg">Mesazhi Juaj *</label>
+          <textarea id="cMsg" rows="5" placeholder="Shkruani mesazhin tuaj këtu..." required></textarea>
+        </div>
+        <div id="contactSuccess" class="success-msg">
+          <i class="fas fa-check-circle"></i>
+          Mesazhi u përgatit për WhatsApp. Ju lutem shtypni “Send” që të na mbërrijë.
+        </div>
+        <button type="button" class="btn-submit" onclick="sendContactMessage()">
+          <i class="fab fa-whatsapp"></i> Dërgo Mesazhin
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Edu<span>Shkodër</span></div>
+        <p class="footer-desc">Mësime private 1 me 1 në Shkodër. Mësues të zgjedhur prej jush, orare fleksibël, rezultate reale.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="footer-social" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Lidhje të Shpejta</h4>
+        <ul>
+          <li><a href="#courses">Kurset Tona</a></li>
+          <li><a href="#teachers">Mësuesit</a></li>
+          <li><a href="#how">Si Funksionon</a></li>
+          <li><a href="#booking">Rezervo Orar</a></li>
+          <li><a href="#join">Bëhu Mësues</a></li>
+          <li><a href="#reviews">Komentet</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kurset</h4>
+        <ul id="footerCourseLinks"></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span id="footerYear">2026</span> <span>EduShkodër</span>. Të gjitha të drejtat e rezervuara.</p>
+      <p class="footer-copy" style="color:rgba(255,255,255,0.2);">Bërë me <span style="color:var(--orange);">♥</span> në Shkodër</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/355696147703" class="whatsapp-float" target="_blank" title="Na kontaktoni në WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<div class="whatsapp-tooltip">Na kontaktoni!</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
