@@ -107,7 +107,7 @@ const TEACHERS = [
     courseIds: ['general-1-6', 'fillore-1-5'],
     accent: 'linear-gradient(135deg,#FF6B35,#FFD166)',
     featured: true,
-    note: 'Përgatitje ditore e mësimeve dhe program i avancuar. Mbështetje në tekste jashtëshkollore dhe program i personalizuar sipas nevojave të fëmijëve.',
+    note: 'Eksperiencë 37 vjeçare në mësimdhënie. Diplomuar në vitin 1989 me mesatare maksimale, ushtron profesionin me përkushtim duke i kushtuar vëmendje të veçantë empatisë dhe gjithpërfshirjes të secilit nxënës. Përgatitje ditore e mësimeve dhe program i avancuar. Mbështetje në tekste jashtëshkollore dhe program i personalizuar sipas nevojave të fëmijëve.',
     instagram: 'https://www.instagram.com/libra.education/'
   },
   {
@@ -140,7 +140,8 @@ const TEACHERS = [
     subject: 'Anglisht',
     maps: 'https://www.google.com/maps/place/Qendra+Tregtare/@42.0687823,19.5078719,3a,75y,58.93h,84.82t/data=!3m7!1e1!3m5!1sTEGLyOjvh0IiScBEjmjUDw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D5.176114915128949%26panoid%3DTEGLyOjvh0IiScBEjmjUDw%26yaw%3D58.93163660727847!7i13312!8i6656!4m6!3m5!1s0x134e01e7e2e5b22d:0x8b1e44c017df8696!8m2!3d42.068996!4d19.5082158!16s%2Fg%2F11jdhclxdp?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['anglisht'],
-    accent: 'linear-gradient(135deg,#34d399,#6ee7b7)'
+    accent: 'linear-gradient(135deg,#34d399,#6ee7b7)',
+    note: 'Mësuese që nga viti 2007, ushtron profesionin në një nga shkollat elitare të qytetit. Puna e saj ka në qendër komunikimin dhe mësimin jashtë kornizave të metodave tradicionale. Empatia dhe komunikimi janë thelbësore në punën e saj me nxënës të çdo moshe dhe klase.'
   },
   {
     name: 'Elvira Bushati',
@@ -197,16 +198,27 @@ const TEACHERS = [
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Parruce,+Shkod%C3%ABr,+Albania/@42.0655949,19.5093466,3a,75y,327.06h,109.41t/data=!3m7!1e1!3m5!1sXu5Y-dsqOXnLzLAq_C3jRg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.407779314115274%26panoid%3DXu5Y-dsqOXnLzLAq_C3jRg%26yaw%3D327.0599634022138!7i13312!8i6656!4m6!3m5!1s0x134e00fd333cee93:0xf7dd6cb6c1a156d2!8m2!3d42.0649077!4d19.5095779!16s%2Fg%2F1tnpbq4n?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['matematike'],
-    accent: 'linear-gradient(135deg,#d97706,#fbbf24)'
+    accent: 'linear-gradient(135deg,#d97706,#fbbf24)',
+    note: 'Mësuese me eksperiencë mbi 35 vjeçare në mësimdhënie në një nga gjimnazet kryesore të qytetit. Puna e saj ka në qendër marrjen e njohurive themelore të matematikës dhe përgatitjen për provimin e maturës. Përdorimi i teksteve të larmishëm është një ndër parimet kryesore të saj.'
   },
+  {
+    name: 'Amer Elezi',
+    phone: '355696147703',
+    subject: 'Të Gjitha Lëndët',
+    maps: 'https://www.google.com/maps/place/Shkod%C3%ABr,+Albania/@42.0682,19.5126,14z',
+    courseIds: ['general-1-6','fillore-1-5','matematike','anglisht','gjermanisht','italisht','kimi-biologji','gjuhe-letersi','fizike'],
+    accent: 'linear-gradient(135deg,#FF6B35,#FFD166)',
+    featured: true,
+    note: 'Krijuesi i website-it. Kontaktoni për çdo informacion ose rezervim prove.'
+  }
 ];
 
 function escapeHtml(text) {
   return (text || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"');
 }
 
 function formatPhone(phone) {
@@ -588,7 +600,26 @@ function switchTab(tab) {
 
 let reviewRating = 0;
 const REVIEWS_INBOX_PHONE = OWNER.phone;
-const APPROVED_REVIEWS = [];
+const APPROVED_REVIEWS = [
+  {
+    name: 'Elvira Haxhiu',
+    meta: 'Nënë e Ardianit, 16 vjeç',
+    rating: 5,
+    text: 'Djali im ka ndryshuar krejtësisht qëndrimin ndaj matematikës. Nga nota 5 ka arritur në 9 brenda tre muajsh. Mësuesi është i jashtëzakonshëm dhe shumë i durueshëm.'
+  },
+  {
+    name: 'Jon B.',
+    meta: 'Nxënës i gjuhës angleze',
+    rating: 5,
+    text: 'Më parë kisha frikë të flisja anglisht. Tani po komunikoj shumë më lirshëm dhe notat e mia janë përmirësuar ndjeshëm. Orët janë të qarta dhe shumë praktike.'
+  },
+  {
+    name: 'Prind i Sarës',
+    meta: 'Prind i nxënëses, klasa 9',
+    rating: 5,
+    text: 'Kursi i gjermanishtes i dha vajzës sime besim dhe disiplinë. Brenda pak javësh filloi të lexojë dhe të shkruajë më mirë se sa prisnim.'
+  }
+];
 
 const starPicker = document.getElementById('starPicker');
 starPicker.querySelectorAll('i').forEach(star => {
