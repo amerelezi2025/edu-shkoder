@@ -107,7 +107,7 @@ const TEACHERS = [
     courseIds: ['general-1-6', 'fillore-1-5'],
     accent: 'linear-gradient(135deg,#FF6B35,#FFD166)',
     featured: true,
-    note: 'Eksperiencë 37 vjeçare në mësimdhënie. Diplomuar në vitin 1989 me mesatare maksimale, ushtron profesionin me përkushtim duke i kushtuar vëmendje të veçantë empatisë dhe gjithpërfshirjes të secilit nxënës. Përgatitje ditore e mësimeve dhe program i avancuar. Mbështetje në tekste jashtëshkollore dhe program i personalizuar sipas nevojave të fëmijëve.',
+    note: 'Eksperiencë 37 vjeçare në mësimdhënie. Ushtron profesionin me përkushtim duke i kushtuar vëmendje të veçantë empatisë dhe gjithpërfshirjes të secilit nxënës. Përgatitje ditore e mësimeve dhe program i avancuar. Mbështetje në tekste jashtëshkollore dhe program i personalizuar sipas nevojave të fëmijëve.',
     instagram: 'https://www.instagram.com/libra.education/'
   },
   {
@@ -165,13 +165,13 @@ const TEACHERS = [
     note: 'Pedagoge universitare dhe mësuese e matematikës, ndër figurat akademike më të spikatura të lëndës në Shkodër. Angazhimi i saj si në nivel shkollor ashtu edhe universitar e bën ndër zgjedhjet ideale për nxënës që synojnë rezultate të shkëlqyera. Qasja e saj metodike sjell ndryshim real.'
   },
   {
-    name: 'Dr. Bendis Hoxha',
+    name: 'Dr Bendis Hoxha',
     phone: '355692136564',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Rruga+Europa,+Shkod%C3%ABr,+Albania/@42.0769808,19.5127879,17z/data=!3m1!4b1!4m6!3m5!1s0x134e00f4011c4b5f:0xb8230d8b5e825604!8m2!3d42.0769808!4d19.5153628!16s%2Fg%2F1th548l6?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['matematike'],
     accent: 'linear-gradient(135deg,#fbbf24,#fde68a)',
-    note: 'Me titull doktoral dhe formim akademik të lartë, Dr. Bendis Hoxha është ndër mësueset më të kualifikuara të matematikës në Shkodër. Metodologjia e saj bashkëkohore dhe rigoroziteti shkencor u mundësojnë nxënësve të ndërtojnë themelet më të forta të lëndës.'
+    note: 'Bendis Hoxha është ndër mësueset më të kualifikuara të matematikës në Shkodër. Metodologjia e saj bashkëkohore dhe rigoroziteti shkencor u mundësojnë nxënësve të ndërtojnë themelet më të forta të lëndës.'
   },
   {
     name: 'Naxhija Milla',
@@ -198,7 +198,7 @@ const TEACHERS = [
     maps: 'https://www.google.com/maps/place/Maarif+Shkod%C3%ABr+Campus/@42.0771351,19.510363,3a,75y,357.24h,75.91t/data=!3m7!1e1!3m5!1sRu4Ox7D1T2cNSvuW8lnwZQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D14.089699759148104%26panoid%3DRu4Ox7D1T2cNSvuW8lnwZQ%26yaw%3D357.2386476441965!7i13312!8i6656!4m6!3m5!1s0x134e015ea8e708e1:0x62bd438bbc0e1614!8m2!3d42.0771233!4d19.5106265!16s%2Fg%2F11l1s445gf?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['gjuhe-letersi'],
     accent: 'linear-gradient(135deg,#be185d,#f472b6)',
-    note: 'Ndër mësueset më të shquara të letërsisë dhe gjuhës shqipe në Shkodër, me eksperiencë të gjerë dhe metodologji frymëzuese. Ushtron profesionin në njërën nga shkollat ndërkombëtare kryesore të qytetit. Qasja e saj ndaj tekstit dhe shkrimit është ndër më efektivet dhe të çmuarat.'
+    note: 'Ndër mësueset më të shquara të letërsisë dhe gjuhës shqipe në Shkodër, me eksperiencë të gjerë dhe metodologji frymëzuese. Qasja e saj ndaj tekstit dhe shkrimit është ndër më efektivet dhe të çmuarat.'
   },
   {
     name: 'Valbona Vila',
