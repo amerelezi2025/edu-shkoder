@@ -101,6 +101,7 @@ const COURSES = [
 const TEACHERS = [
   {
     name: 'Valdet Luga',
+    slug: 'valdet-luga',
     phone: '355676516773',
     subject: 'Të Përgjithshme (Klasa 1-6) / Fillore (Klasa 1-5)',
     maps: 'https://www.google.com/maps/place/Shkolla+9+vje%C3%A7are+%22Xheladin+Fishta%22/@42.072249,19.5096125,3a,75y,18.53h,68.01t/data=!3m7!1e1!3m5!1sNGjmr4z7FK536rWpzJSeHA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D21.98714872480049%26panoid%3DNGjmr4z7FK536rWpzJSeHA%26yaw%3D18.527216042522184!7i13312!8i6656!4m6!3m5!1s0x134e00e551f038b5:0xe5ca464a635d68e0!8m2!3d42.0725363!4d19.5087931!16s%2Fg%2F11c1wwv25_?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -112,6 +113,7 @@ const TEACHERS = [
   },
   {
     name: 'Mirsada Kadia',
+    slug: 'mirsada-kadia',
     phone: '355684830000',
     subject: 'Gjermanisht',
     maps: 'https://www.google.com/maps/place/Universiteti+i+Shkodr%C3%ABs+%22Luigj+Gurakuqi%22/@42.0663747,19.5101781,3a,75y,302.59h,77.26t/data=!3m7!1e1!3m5!1sWjhnIF2WEkpkOPeY6XCEWw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D12.742345076382705%26panoid%3DWjhnIF2WEkpkOPeY6XCEWw%26yaw%3D302.58838241255006!7i13312!8i6656!4m6!3m5!1s0x134e00fcd146f0df:0xbee74fa0b9f6dbfa!8m2!3d42.0662237!4d19.5095856!16s%2Fm%2F0264mz5?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -121,6 +123,7 @@ const TEACHERS = [
   },
   {
     name: 'Roberta Naraci',
+    slug: 'roberta-naraci',
     phone: '355674060071',
     subject: 'Gjermanisht',
     maps: 'https://www.google.com/maps/place/Shkolla+e+mesme+Teknike+Pyjore+%E2%80%9CKole+Margjini%E2%80%9D/@42.0690468,19.5241354,3a,75y,73.5h,81.77t/data=!3m7!1e1!3m5!1shajw5qc7JNzO0dy1bUmmFw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D8.23161271848251%26panoid%3Dhajw5qc7JNzO0dy1bUmmFw%26yaw%3D73.49779449416356!7i13312!8i6656!4m6!3m5!1s0x134e01f85c2a6ed1:0xb3575bbf7aea15c4!8m2!3d42.0694939!4d19.5240147!16s%2Fg%2F11qnvn0sv7?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -130,6 +133,7 @@ const TEACHERS = [
   },
   {
     name: 'Diana Boriqi',
+    slug: 'diana-boriqi',
     phone: '355673890074',
     subject: 'Anglisht',
     maps: 'https://www.google.com/maps/place/Shkolla+9-vje%C3%A7are+%22Ndre+Mjeda%22/@42.0630321,19.506876,3a,75y,150.75h,71.73t/data=!3m7!1e1!3m5!1sN3ZtAgiK4qaqZIVqsNbcow!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D18.272063414824743%26panoid%3DN3ZtAgiK4qaqZIVqsNbcow%26yaw%3D150.75104675711057!7i13312!8i6656!4m6!3m5!1s0x134e011eba67a377:0x78fd26a6b71638dd!8m2!3d42.062877!4d19.5052845!16s%2Fg%2F11g6qv45m_?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -139,6 +143,7 @@ const TEACHERS = [
   },
   {
     name: 'Vaelza Golemi',
+    slug: 'vaelza-golemi',
     phone: '355692511260',
     subject: 'Anglisht',
     maps: 'https://www.google.com/maps/place/Qendra+Tregtare/@42.0687823,19.5078719,3a,75y,58.93h,84.82t/data=!3m7!1e1!3m5!1sTEGLyOjvh0IiScBEjmjUDw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D5.176114915128949%26panoid%3DTEGLyOjvh0IiScBEjmjUDw%26yaw%3D58.93163660727847!7i13312!8i6656!4m6!3m5!1s0x134e01e7e2e5b22d:0x8b1e44c017df8696!8m2!3d42.068996!4d19.5082158!16s%2Fg%2F11jdhclxdp?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -148,6 +153,7 @@ const TEACHERS = [
   },
   {
     name: 'Elvira Bushati',
+    slug: 'elvira-bushati',
     phone: '355674061081',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Bexhisteni/@42.0713151,19.5095681,3a,75y,62.1h,79.94t/data=!3m7!1e1!3m5!1shC2yz2-19tc3YiwhqKTkjw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D10.062013162893408%26panoid%3DhC2yz2-19tc3YiwhqKTkjw%26yaw%3D62.09952613697949!7i13312!8i6656!4m7!3m6!1s0x134e013d85987cbd:0x70bfdcd5fa9ed649!8m2!3d42.0538844!4d19.4979228!10e5!16s%2Fg%2F1thv1v7v?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -157,6 +163,7 @@ const TEACHERS = [
   },
   {
     name: 'Frida Luani',
+    slug: 'frida-luani',
     phone: '355683704370',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Gjuhadol,+Shkod%C3%ABr,+Albania/@42.0681554,19.5134996,17z/data=!3m1!4b1!4m6!3m5!1s0x134e00f942f52a21:0xb80935a0ee44b22d!8m2!3d42.0688576!4d19.5158999!16s%2Fg%2F1tgw29t0?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -166,6 +173,7 @@ const TEACHERS = [
   },
   {
     name: 'Dr Bendis Hoxha',
+    slug: 'dr-bendis-hoxha',
     phone: '355692136564',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Rruga+Europa,+Shkod%C3%ABr,+Albania/@42.0769808,19.5127879,17z/data=!3m1!4b1!4m6!3m5!1s0x134e00f4011c4b5f:0xb8230d8b5e825604!8m2!3d42.0769808!4d19.5153628!16s%2Fg%2F1th548l6?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -175,6 +183,7 @@ const TEACHERS = [
   },
   {
     name: 'Naxhija Milla',
+    slug: 'naxhija-milla',
     phone: '355692627187',
     subject: 'Kimi',
     maps: 'https://www.google.com/maps/place/Bexhisteni/@42.0704094,19.509197,3a,75y,70.12h,106.5t/data=!3m7!1e1!3m5!1s_DMyWluhPqX5deGfaR8UAQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-16.50211282562364%26panoid%3D_DMyWluhPqX5deGfaR8UAQ%26yaw%3D70.12165077524617!7i13312!8i6656!4m6!3m5!1s0x134e013d85987cbd:0x70bfdcd5fa9ed649!8m2!3d42.0538844!4d19.4979228!16s%2Fg%2F1thv1v7v?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -184,6 +193,7 @@ const TEACHERS = [
   },
   {
     name: 'Miranda Bala',
+    slug: 'miranda-bala',
     phone: '355692516062',
     subject: 'Italisht',
     maps: 'https://www.google.com/maps/place/AZA+Electronics/@42.070416,19.5122621,17z/data=!3m1!4b1!4m6!3m5!1s0x134e00fa2420fe11:0xaebef4c9349b86f9!8m2!3d42.070416!4d19.514837!16s%2Fg%2F11c5rqzz4y?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -193,6 +203,7 @@ const TEACHERS = [
   },
   {
     name: 'Afërdita Bruçeti',
+    slug: 'aferdita-bruceti',
     phone: '355697724356',
     subject: 'Letërsi / Gjuhë',
     maps: 'https://www.google.com/maps/place/Maarif+Shkod%C3%ABr+Campus/@42.0771351,19.510363,3a,75y,357.24h,75.91t/data=!3m7!1e1!3m5!1sRu4Ox7D1T2cNSvuW8lnwZQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D14.089699759148104%26panoid%3DRu4Ox7D1T2cNSvuW8lnwZQ%26yaw%3D357.2386476441965!7i13312!8i6656!4m6!3m5!1s0x134e015ea8e708e1:0x62bd438bbc0e1614!8m2!3d42.0771233!4d19.5106265!16s%2Fg%2F11l1s445gf?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D',
@@ -202,6 +213,7 @@ const TEACHERS = [
   },
   {
     name: 'Valbona Vila',
+    slug: 'valbona-vila',
     phone: '355670000286',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Parruce,+Shkod%C3%ABr,+Albania/@42.0655949,19.5093466,3a,75y,327.06h,109.41t/data=!3m7!1e1!3m5!1sXu5Y-dsqOXnLzLAq_C3jRg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.407779314115274%26panoid%3DXu5Y-dsqOXnLzLAq_C3jRg%26yaw%3D327.0599634022138!7i13312!8i6656!4m6!3m5!1s0x134e00fd333cee93:0xf7dd6cb6c1a156d2!8m2!3d42.0649077!4d19.5095779!16s%2Fg%2F1tnpbq4n?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D',
@@ -304,6 +316,9 @@ function renderTeachers() {
         <a href="${teacher.maps}" target="_blank" class="teacher-btn teacher-btn-map">
           <i class="fas fa-map-marker-alt"></i> Vendndodhja
         </a>
+        <a href="${teacher.slug}.html" class="teacher-btn" style="background:var(--orange);color:#fff;">
+          <i class="fas fa-user"></i> Profili
+        </a>
         ${teacher.instagram ? `<a href="${teacher.instagram}" target="_blank" class="teacher-btn" style="background:#e1306c;color:#fff;"><i class="fab fa-instagram"></i> Instagram</a>` : ''}
       </div>
     </div>
@@ -323,7 +338,7 @@ function renderCourseOptions() {
 function renderFooterCourses() {
   const list = document.getElementById('footerCourseLinks');
   if (!list) return;
-  list.innerHTML = COURSES.map(course => `<li><a href="#courses">${escapeHtml(course.name)}</a></li>`).join('');
+  list.innerHTML = COURSES.map(course => `<li><a href="${course.id}.html">${escapeHtml(course.name)}</a></li>`).join('');
 }
 
 function renderCounts() {
