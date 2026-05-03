@@ -35,12 +35,12 @@ const COURSES = [
   },
   {
     id: 'konkursi-kangur',
-    name: 'Konkursi Math Kangaroo (Kangur Matematike) — Shkodër',
+    name: 'Konkursi Math Kangaroo — Shkodër',
     category: 'Gara matematike',
     icon: 'fa-trophy',
     gradient: 'linear-gradient(135deg,#15803d,#fbbf24)',
-    description: 'Konkurs ndërkombëtar matematikë për klasat 1–12: në Shkodër me qendra sipas kangaroo.al (p.sh. Lider Academy në Sheshin 2 Prilli) dhe modality online. Faqje e strukturuar nga EduShkodër me kontakte dhe harta për kërkime si Math Kangaroo Shkodër, Kangur matematikë Albania, regjistrim konkurs matematikë.',
-    meta: ['Klasa 1–12', 'Regjistrim Kangur Albania', 'Lider Academy · kontakte'],
+    description: 'Konkurs ndërkombëtar matematikë për klasat 1–12: në Shkodër me qendra sipas kangaroo.al (p.sh. Lider Academy në Sheshin 2 Prilli) dhe modality online. EduShkodër përmblidh kontakte dhe harta për kërkime si Math Kangaroo Shkodër dhe regjistrim në Shqipëri.',
+    meta: ['Klasa 1–12', 'Math Kangaroo · Shqipëri', 'Lider Academy · kontakte'],
     featured: true,
     featuredLabel: 'Konkurs i theksuar'
   },
@@ -221,13 +221,13 @@ const TEACHERS = [
     note: 'Mësuese e matematikës, ushtron profesionin në mësimdhënie në një nga gjimnazet kryesore të qytetit. Puna e saj ka në qendër marrjen e njohurive themelore të matematikës dhe përgatitjen për provimin e maturës. Përdorimi i teksteve të larmishëm është një ndër parimet kryesore të saj.'
   },
   {
-    name: 'Konkursi Kangur matematikë — info lokale për Shkodër',
+    name: 'Konkursi Math Kangaroo — info lokale për Shkodër',
     phone: '',
-    subject: 'Math Kangaroo / Kangur Matematike (nga Shoqata Shqiptare e Matematikës)',
+    subject: 'Math Kangaroo — organizim sipas Shoqatës së Matematikës dhe kangaroo.al',
     maps: 'https://www.google.com/maps/search/?api=1&query=Lider+Academy,+Sheshi+2+Prilli,+Shkodër,+Albania',
     courseIds: ['konkursi-kangur'],
     accent: 'linear-gradient(135deg,#15803d,#fbbf24)',
-    note: 'Regjistrohuni kryesisht përmes WhatsApp dhe email të koordinatorëve në faqen konkursi-kangur-shkoder.html ose ndiqni ndryshimet te kangaroo.al. Nëse zgjidhni këtë rresht vetëm nga forma “Rezervo” për pyetje përgjithësuese, përgjigjen e trajton përdoruesi i EduShkodër (jo organizatori Kangur).'
+    note: 'Regjistrohuni kryesisht përmes WhatsApp dhe email të koordinatorëve në faqen konkursi-kangur-shkoder.html ose ndiqni ndryshimet te kangaroo.al. Nëse zgjidhni këtë rresht vetëm nga forma “Rezervo” për pyetje përgjithësuese, përgjigjen e trajton përdoruesi i EduShkodër (jo organizatori zyrtar i konkursit).'
   }
 ];
 
