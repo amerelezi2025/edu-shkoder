@@ -99,7 +99,7 @@ const COURSES = [
   {
     id: 'konkursi-kangur',
     name: 'Konkursi Math Kangaroo — Shkodër',
-    category: 'Gara matematike',
+    category: 'Kurse të veçanta',
     icon: 'fa-trophy',
     gradient: 'linear-gradient(135deg,#15803d,#fbbf24)',
     description: 'Konkurs ndërkombëtar matematikë për klasat 1–12: në Shkodër me qendra sipas kangaroo.al (p.sh. Lider Academy në Sheshin 2 Prilli) dhe modality online. EduShkodër përmblidh kontakte dhe harta për kërkime si Math Kangaroo Shkodër dhe regjistrim në Shqipëri.',
