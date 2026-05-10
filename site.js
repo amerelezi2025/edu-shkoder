@@ -246,6 +246,32 @@ function formatPhone(phone) {
   return `+${digits}`;
 }
 
+function coursePageHref(course) {
+  return course.id === 'konkursi-kangur'
+    ? 'konkursi-kangur-shkoder.html'
+    : `${course.id}.html`;
+}
+
+const TEACHER_PROFILE_PATHS = {
+  'Valdet Luga': 'valdet-luga.html',
+  'Mirsada Kadia': 'mirsada-kadia.html',
+  'Roberta Naraci': 'roberta-naraci.html',
+  'Diana Boriqi': 'diana-boriqi.html',
+  'Vaelza Golemi': 'vaelza-golemi.html',
+  'Elvira Bushati': 'elvira-bushati.html',
+  'Frida Luani': 'frida-luani.html',
+  'Dr Bendis Hoxha': 'dr-bendis-hoxha.html',
+  'Naxhija Milla': 'naxhija-milla.html',
+  'Miranda Bala': 'miranda-bala.html',
+  'Afërdita Bruçeti': 'aferdita-bruceti.html',
+  'Valbona Vila': 'valbona-vila.html',
+  'Konkursi Math Kangaroo — info lokale për Shkodër': 'konkursi-kangur-shkoder.html'
+};
+
+function teacherProfileHref(teacher) {
+  return TEACHER_PROFILE_PATHS[teacher.name] || '#teachers';
+}
+
 function getInitials(name) {
   return name
     .split(' ')
@@ -286,9 +312,9 @@ function renderCourseCards() {
 
   grid.innerHTML = COURSES.map((course, index) => {
     const kangur = course.id === 'konkursi-kangur';
-    const courseHref = kangur ? 'konkursi-kangur-shkoder.html' : '#booking';
-    const courseBtn = kangur ? 'Detaje &amp; kontakte' : 'Rezervo';
-    const courseIconClass = kangur ? 'fas fa-arrow-up-right-from-square' : 'fas fa-arrow-right';
+    const courseHref = coursePageHref(course);
+    const courseBtn = kangur ? 'Detaje &amp; kontakte' : 'Shiko Detajet';
+    const courseIconClass = 'fas fa-arrow-up-right-from-square';
     return `
     <div class="course-card reveal ${index % 3 === 0 ? 'reveal-delay-1' : index % 3 === 1 ? 'reveal-delay-2' : 'reveal-delay-3'} ${course.featured ? 'featured' : ''}">
       <div class="course-card-top ${course.featured ? 'has-spotlight' : ''}">
@@ -325,6 +351,9 @@ function renderTeachers() {
         <a href="${teacher.phone ? `https://wa.me/${teacher.phone}` : buildOwnerRequestLink(teacher.name)}" target="_blank" class="teacher-btn teacher-btn-wa">
           <i class="fab fa-whatsapp"></i> ${teacher.phone ? 'WhatsApp' : 'Kërko Kontaktin'}
         </a>
+        <a href="${teacherProfileHref(teacher)}" class="teacher-btn teacher-btn-profile">
+          <i class="fas fa-user"></i> Profili
+        </a>
         <a href="${teacher.maps}" target="_blank" class="teacher-btn teacher-btn-map">
           <i class="fas fa-map-marker-alt"></i> Vendndodhja
         </a>
@@ -348,7 +377,7 @@ function renderFooterCourses() {
   const list = document.getElementById('footerCourseLinks');
   if (!list) return;
   list.innerHTML = COURSES.map(course => {
-    const href = course.id === 'konkursi-kangur' ? 'konkursi-kangur-shkoder.html' : '#courses';
+    const href = coursePageHref(course);
     return `<li><a href="${href}">${escapeHtml(course.name)}</a></li>`;
   }).join('');
 }
