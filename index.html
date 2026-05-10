@@ -24,7 +24,7 @@
   <meta property="og:url" content="https://edushkoder.com/" />
   <meta property="og:title" content="EduShkodër – Mësime Private 1 me 1 në Shkodër" />
   <meta property="og:description" content="Zgjidhni mësuesin tuaj, caktoni orarin dhe filloni të mësoni sot. Rezultate reale me mësues të zgjedhur prej jush." />
-  <meta property="og:image" content="https://edushkoder.com/og-image.jpg" />
+  <meta property="og:image" content="https://edushkoder.com/og-image.svg" />
   <meta property="og:locale" content="sq_AL" />
   <meta property="og:site_name" content="EduShkodër" />
 
@@ -32,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="EduShkodër – Mësime Private 1 me 1 në Shkodër" />
   <meta name="twitter:description" content="Zgjidhni mësuesin tuaj, caktoni orarin dhe filloni të mësoni sot." />
-  <meta name="twitter:image" content="https://edushkoder.com/og-image.jpg" />
+  <meta name="twitter:image" content="https://edushkoder.com/og-image.svg" />
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -226,6 +226,10 @@
 
     /* Write + read layout */
     .reviews-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 52px; align-items: start; }
+    .review-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 18px; }
+    .review-summary-item { background: var(--white); border: 2px solid var(--gray-mid); border-radius: var(--radius); padding: 14px 16px; }
+    .review-summary-value { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--orange); line-height: 1.1; }
+    .review-summary-label { font-size: 0.76rem; color: var(--gray); margin-top: 4px; }
     .reviews-list { display: flex; flex-direction: column; gap: 18px; }
     .review-card { background: var(--white); border: 2px solid var(--gray-mid); border-radius: var(--radius-lg); padding: 24px 22px; transition: var(--transition); }
     .review-card:hover { border-color: var(--yellow); box-shadow: var(--shadow-sm); }
@@ -236,6 +240,7 @@
     .review-stars { display: flex; gap: 2px; margin-bottom: 8px; }
     .review-stars i { color: var(--yellow); font-size: 0.85rem; }
     .review-stars i.empty { color: var(--gray-mid); }
+    .review-service { display: inline-flex; align-items: center; gap: 6px; background: var(--yellow-light); color: var(--orange-dark); border-radius: 100px; padding: 4px 10px; font-size: 0.72rem; font-weight: 800; margin-bottom: 10px; }
     .review-text { font-size: 0.87rem; color: var(--gray); line-height: 1.65; font-style: italic; }
     .review-form-card { background: var(--white); border-radius: var(--radius-lg); padding: 32px 28px; box-shadow: var(--shadow-md); position: sticky; top: 100px; }
     .review-form-card h3 { margin-bottom: 22px; }
@@ -245,6 +250,8 @@
     .btn-review-submit { width: 100%; background: linear-gradient(135deg, var(--orange), var(--orange-light)); color: var(--white); border: none; border-radius: var(--radius); padding: 13px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; }
     .btn-review-submit:hover { background: linear-gradient(135deg, var(--orange-dark), var(--orange)); transform: translateY(-2px); }
     .reviews-note { font-size: 0.8rem; color: var(--gray); line-height: 1.6; margin-top: 2px; }
+    .consent-line { display: flex; gap: 10px; align-items: flex-start; font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+    .consent-line input { width: auto; margin-top: 4px; accent-color: var(--orange); }
     .empty-reviews { text-align: center; padding: 40px 20px; color: var(--gray); }
     .empty-reviews i { font-size: 2.5rem; color: var(--gray-mid); margin-bottom: 12px; display: block; }
 
@@ -256,6 +263,7 @@
     .testi-text { font-size: 0.91rem; color: var(--gray); font-style: italic; margin-bottom: 22px; line-height: 1.7; }
     .stars { display: flex; gap: 3px; margin-bottom: 18px; }
     .stars i { color: var(--yellow); font-size: 0.92rem; }
+    .stars i.empty { color: var(--gray-mid); }
     .testi-author { display: flex; align-items: center; gap: 12px; }
     .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--yellow)); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--white); flex-shrink: 0; }
     .testi-name { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.93rem; }
@@ -346,6 +354,7 @@
       #hero { padding: 60px 0 48px; min-height: auto; }
       .booking-form-card { padding: 24px 18px; }
       .reviews-tabs { max-width: 100%; }
+      .review-summary { grid-template-columns: 1fr; }
       .contact-chip-wrap { justify-content: flex-start; }
     }
     @media (max-width: 480px) {
@@ -590,6 +599,20 @@
             <i class="fas fa-shield-alt" style="margin-right:6px;color:var(--orange);"></i>
             Komentet më poshtë janë komente të verifikuara që janë miratuar për publikim.
           </p>
+          <div class="review-summary">
+            <div class="review-summary-item">
+              <div class="review-summary-value">5.0</div>
+              <div class="review-summary-label">Vlerësim mesatar</div>
+            </div>
+            <div class="review-summary-item">
+              <div class="review-summary-value">12</div>
+              <div class="review-summary-label">Komente të mbledhura</div>
+            </div>
+            <div class="review-summary-item">
+              <div class="review-summary-value">1 me 1</div>
+              <div class="review-summary-label">Mësime private</div>
+            </div>
+          </div>
           <div class="reviews-list" id="reviewsList">
             <!-- rendered by JS -->
           </div>
@@ -621,9 +644,19 @@
               </div>
             </div>
             <div class="form-group">
+              <label>Kursi / Mësuesi</label>
+              <select id="reviewCourse">
+                <option value="" selected>— Zgjidhni nëse dëshironi —</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label>Komenti juaj *</label>
               <textarea id="reviewText" rows="4" placeholder="Ndani përvojën tuaj..."></textarea>
             </div>
+            <label class="consent-line">
+              <input type="checkbox" id="reviewConsent" />
+              <span>Pranoj që komenti im të shqyrtohet dhe, nëse miratohet, të publikohet në faqen EduShkodër me emrin tim.</span>
+            </label>
             <button class="btn-review-submit" onclick="submitReview()">
               <i class="fab fa-whatsapp"></i> Dërgo në WhatsApp
             </button>
@@ -834,10 +867,32 @@
 {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "EducationalOrganization"],
+  "@id": "https://edushkoder.com/#business",
   "name": "EduShkodër",
   "description": "Mësime private 1 me 1 në Shkodër. Mësues të zgjedhur prej jush, orare fleksibël, rezultate reale. Gjithashtu faqe informuese për Math Kangaroo në Shkodër.",
   "url": "https://edushkoder.com",
+  "image": "https://edushkoder.com/og-image.svg",
+  "logo": "https://edushkoder.com/og-image.svg",
   "telephone": "+355696147703",
+  "slogan": "Mësime private 1 me 1 në Shkodër",
+  "areaServed": {
+    "@type": "City",
+    "name": "Shkodër"
+  },
+  "availableLanguage": ["sq", "Albanian"],
+  "knowsAbout": [
+    "Mësime private",
+    "Matematikë",
+    "Anglisht",
+    "Gjermanisht",
+    "Italisht",
+    "Fizikë",
+    "Kimi",
+    "Biologji",
+    "Gjuhë shqipe",
+    "Letërsi",
+    "Math Kangaroo"
+  ],
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Shkodër",

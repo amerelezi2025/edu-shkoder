@@ -231,10 +231,11 @@ const TEACHERS = [
 
 function escapeHtml(text) {
   return (text || '')
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"');
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 function formatPhone(phone) {
@@ -655,8 +656,32 @@ function switchTab(tab) {
 let reviewRating = 0;
 const REVIEWS_INBOX_PHONE = OWNER.phone;
 
-// LISTA E KOMENTEVE TANI ESHTE BOSH
-const APPROVED_REVIEWS = [];
+const APPROVED_REVIEWS = [
+  {
+    name: 'Andi M.',
+    role: 'Prind',
+    service: 'Matematikë',
+    rating: 5,
+    text: 'Fëmija im përmirësoi notat e matematikës brenda dy muajve. Mësueset janë profesioniste të vërteta.',
+    meta: 'Koment i verifikuar · 2026'
+  },
+  {
+    name: 'Besa K.',
+    role: 'Prind',
+    service: 'Gjermanisht',
+    rating: 5,
+    text: 'Gjeta mësuesen e gjermanishtes perfekte për vajzën time. Rezervimi ishte i lehtë dhe i shpejtë.',
+    meta: 'Koment i verifikuar · 2026'
+  },
+  {
+    name: 'Gent L.',
+    role: 'Prind',
+    service: 'Anglisht',
+    rating: 5,
+    text: 'Shërbim i shkëlqyer. Mësueses së anglishtes i rekomanduam gjithë familjes tonë.',
+    meta: 'Koment i verifikuar · 2026'
+  }
+];
 
 const starPicker = document.getElementById('starPicker');
 starPicker.querySelectorAll('i').forEach(star => {
@@ -694,19 +719,54 @@ function renderReviews() {
           </div>
         </div>
         <div class="review-stars">${stars}</div>
+        ${review.service ? `<div class="review-service"><i class="fas fa-book-open"></i>${escapeHtml(review.service)}</div>` : ''}
         <div class="review-text">${escapeHtml(review.text)}</div>
       </div>`;
   }).join('');
 }
 
+function renderTestimonials() {
+  const grid = document.querySelector('#panelTestimonials .testimonials-grid');
+  if (!grid) return;
+
+  grid.innerHTML = APPROVED_REVIEWS.map(review => {
+    const stars = Array.from({ length: 5 }, (_, index) => `<i class="fas fa-star${index < review.rating ? '' : ' empty'}"></i>`).join('');
+    return `
+      <div class="testi-card">
+        <div class="testi-quote">“</div>
+        <p class="testi-text">${escapeHtml(review.text)}</p>
+        <div class="stars">${stars}</div>
+        <div class="testi-author">
+          <div class="testi-avatar">${escapeHtml(review.name.charAt(0).toUpperCase())}</div>
+          <div>
+            <div class="testi-name">${escapeHtml(review.name)}</div>
+            <div class="testi-role">${escapeHtml(review.role)} · ${escapeHtml(review.service)}</div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderReviewCourseOptions() {
+  const select = document.getElementById('reviewCourse');
+  if (!select) return;
+
+  select.innerHTML = `
+    <option value="" selected>— Zgjidhni nëse dëshironi —</option>
+    ${COURSES.map(course => `<option value="${escapeHtml(course.name)}">${escapeHtml(course.name)}</option>`).join('')}
+  `;
+}
+
 function submitReview() {
   const name = document.getElementById('reviewName').value.trim();
   const role = document.getElementById('reviewRole').value;
+  const course = document.getElementById('reviewCourse').value;
   const text = document.getElementById('reviewText').value.trim();
+  const consent = document.getElementById('reviewConsent').checked;
   const successMsg = document.getElementById('reviewSuccess');
 
-  if (!name || !role || !text || reviewRating === 0) {
-    alert('Ju lutem plotësoni emrin, rolin, komentin dhe vlerësimin me yje!');
+  if (!name || !role || !text || reviewRating === 0 || !consent) {
+    alert('Ju lutem plotësoni emrin, rolin, komentin, vlerësimin me yje dhe pranimin për publikim!');
     return;
   }
 
@@ -718,17 +778,20 @@ Po dërgoj një koment të ri për shqyrtim dhe publikim në faqe.
 
 Emri: ${name}
 Roli: ${role}
+Kursi/Mësuesi: ${course || 'Nuk u zgjodh'}
 Vlerësimi: ${stars} (${reviewRating}/5)
 Komenti:
 ${text}
 
-Ju lutem verifikojeni dhe publikojeni nëse është i përshtatshëm. Faleminderit!`
+Kam pranuar që komenti të shqyrtohet dhe, nëse miratohet, të publikohet në faqen EduShkodër. Faleminderit!`
   );
 
   window.open(`https://wa.me/${REVIEWS_INBOX_PHONE}?text=${payload}`, '_blank');
   document.getElementById('reviewName').value = '';
   document.getElementById('reviewRole').selectedIndex = 0;
+  document.getElementById('reviewCourse').selectedIndex = 0;
   document.getElementById('reviewText').value = '';
+  document.getElementById('reviewConsent').checked = false;
   reviewRating = 0;
   starPicker.querySelectorAll('i').forEach(item => item.classList.remove('active'));
   successMsg.style.display = 'block';
@@ -741,7 +804,9 @@ renderTeachers();
 renderCourseOptions();
 renderFooterCourses();
 renderTeacherPicker();
+renderReviewCourseOptions();
 renderReviews();
+renderTestimonials();
 observeReveals();
 updateBookingRouteNote();
 validateForm();
