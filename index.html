@@ -11,6 +11,7 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" /> -->
 
   <!-- SEO: Title & Description -->
   <title>EduShkodër – Mësime Private 1 me 1 në Shkodër | Tutor</title>
@@ -33,6 +34,97 @@
   <meta name="twitter:title" content="EduShkodër – Mësime Private 1 me 1 në Shkodër" />
   <meta name="twitter:description" content="Zgjidhni mësuesin tuaj, caktoni orarin dhe filloni të mësoni sot." />
   <meta name="twitter:image" content="https://edushkoder.com/og-image.svg" />
+
+  <!-- SEO: Local business and FAQ structured data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "LocalBusiness",
+        "EducationalOrganization"
+      ],
+      "@id": "https://edushkoder.com/#business",
+      "name": "EduShkodër",
+      "url": "https://edushkoder.com/",
+      "description": "EduShkodër ofron mësime private 1 me 1 në Shkodër për nxënës të ciklit fillor, 9-vjeçar dhe të mesëm.",
+      "image": "https://edushkoder.com/og-image.svg",
+      "logo": "https://edushkoder.com/og-image.svg",
+      "telephone": "+355 69 614 7703",
+      "areaServed": {
+        "@type": "City",
+        "name": "Shkodër"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Shkodër",
+        "addressCountry": "AL"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+355 69 614 7703",
+        "contactType": "customer service",
+        "availableLanguage": [
+          "sq",
+          "Albanian"
+        ]
+      },
+      "sameAs": [
+        "https://www.facebook.com/edushkoder",
+        "https://www.instagram.com/edushkoder"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://edushkoder.com/#faq",
+      "inLanguage": "sq-AL",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Sa kushtojnë mësimet private në EduShkodër?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Çmimi varet nga lënda, niveli i nxënësit, mësuesi dhe numri i orëve që zgjidhni. Pas dërgimit të kërkesës në WhatsApp, konfirmohen çmimi dhe orari përpara se të fillojë mësimi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cilat lëndë ofrohen për mësime private në Shkodër?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EduShkodër ofron matematikë, anglisht, gjermanisht, italisht, fizikë, kimi, biologji, gjuhë dhe letërsi, si edhe përforcim për klasat fillore. Çdo lëndë zhvillohet me qasje 1 me 1 sipas nevojës së nxënësit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Si bëhet rezervimi i një ore mësimi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zgjidhni lëndën ose mësuesin, plotësoni formularin e rezervimit dhe kërkesa dërgohet direkt në WhatsApp. Mësuesi ose ekipi i EduShkodër ju kthen përgjigje për të konfirmuar orarin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A janë mësimet private 1 me 1?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Po, fokusi kryesor i platformës është mësimi individual 1 me 1. Kjo i jep nxënësit vëmendje të plotë, ritëm të personalizuar dhe mundësi për të punuar pikërisht te temat ku ka më shumë nevojë."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A mund ta zgjedh vetë mësuesin dhe orarin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Po, mund të zgjidhni mësuesin që i përshtatet më mirë lëndës, nivelit dhe objektivit tuaj. Orari caktohet në marrëveshje me mësuesin, në bazë të disponibilitetit."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -283,6 +375,14 @@
     .contact-chip-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
     .contact-chip { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 100px; background: var(--gray-light); border: 1.5px solid var(--gray-mid); font-size: 0.84rem; font-weight: 700; color: var(--dark); transition: var(--transition); }
     .contact-chip:hover { color: var(--orange); border-color: var(--orange); background: rgba(255,107,53,0.05); }
+    /* FAQ */
+    #faq { padding: 96px 0; background: var(--gray-light); }
+    .faq-list { display: grid; gap: 16px; max-width: 880px; margin: 48px auto 0; }
+    .faq-item { background: var(--white); border: 2px solid var(--gray-mid); border-radius: var(--radius-lg); padding: 24px 26px; box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .faq-item:hover { border-color: rgba(255,107,53,0.35); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .faq-item h3 { display: flex; align-items: flex-start; gap: 10px; font-size: 1rem; margin-bottom: 10px; color: var(--dark); }
+    .faq-item h3 i { color: var(--orange); margin-top: 4px; font-size: 0.92rem; flex-shrink: 0; }
+    .faq-item p { color: var(--gray); font-size: 0.94rem; line-height: 1.68; }
 
     /* CONTACT */
     #contact { padding: 96px 0; background: var(--white); }
@@ -789,6 +889,39 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="center-text">
+      <span class="section-tag">Pyetje të Shpeshta</span>
+      <h2 class="section-title">Pyetje të zakonshme për mësimet private në Shkodër</h2>
+      <p class="section-subtitle">Përgjigje të shkurtra për çmimet, lëndët, rezervimin dhe mënyrën si funksionojnë orët 1 me 1.</p>
+    </div>
+    <div class="faq-list">
+      <article class="faq-item">
+        <h3><i class="fas fa-circle-question" aria-hidden="true"></i>Sa kushtojnë mësimet private në EduShkodër?</h3>
+        <p>Çmimi varet nga lënda, niveli i nxënësit, mësuesi dhe numri i orëve që zgjidhni. Pas dërgimit të kërkesës në WhatsApp, konfirmohen çmimi dhe orari përpara se të fillojë mësimi.</p>
+      </article>
+      <article class="faq-item">
+        <h3><i class="fas fa-circle-question" aria-hidden="true"></i>Cilat lëndë ofrohen për mësime private në Shkodër?</h3>
+        <p>EduShkodër ofron matematikë, anglisht, gjermanisht, italisht, fizikë, kimi, biologji, gjuhë dhe letërsi, si edhe përforcim për klasat fillore. Çdo lëndë zhvillohet me qasje 1 me 1 sipas nevojës së nxënësit.</p>
+      </article>
+      <article class="faq-item">
+        <h3><i class="fas fa-circle-question" aria-hidden="true"></i>Si bëhet rezervimi i një ore mësimi?</h3>
+        <p>Zgjidhni lëndën ose mësuesin, plotësoni formularin e rezervimit dhe kërkesa dërgohet direkt në WhatsApp. Mësuesi ose ekipi i EduShkodër ju kthen përgjigje për të konfirmuar orarin.</p>
+      </article>
+      <article class="faq-item">
+        <h3><i class="fas fa-circle-question" aria-hidden="true"></i>A janë mësimet private 1 me 1?</h3>
+        <p>Po, fokusi kryesor i platformës është mësimi individual 1 me 1. Kjo i jep nxënësit vëmendje të plotë, ritëm të personalizuar dhe mundësi për të punuar pikërisht te temat ku ka më shumë nevojë.</p>
+      </article>
+      <article class="faq-item">
+        <h3><i class="fas fa-circle-question" aria-hidden="true"></i>A mund ta zgjedh vetë mësuesin dhe orarin?</h3>
+        <p>Po, mund të zgjidhni mësuesin që i përshtatet më mirë lëndës, nivelit dhe objektivit tuaj. Orari caktohet në marrëveshje me mësuesin, në bazë të disponibilitetit.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer id="footer">
   <div class="container">
@@ -861,111 +994,6 @@
 </a>
 <div class="whatsapp-tooltip">Na kontaktoni!</div>
 
-
-<!-- SEO: Structured Data (Schema.org) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "EducationalOrganization"],
-  "@id": "https://edushkoder.com/#business",
-  "name": "EduShkodër",
-  "description": "Mësime private 1 me 1 në Shkodër. Mësues të zgjedhur prej jush, orare fleksibël, rezultate reale. Gjithashtu faqe informuese për Math Kangaroo në Shkodër.",
-  "url": "https://edushkoder.com",
-  "image": "https://edushkoder.com/og-image.svg",
-  "logo": "https://edushkoder.com/og-image.svg",
-  "telephone": "+355696147703",
-  "slogan": "Mësime private 1 me 1 në Shkodër",
-  "areaServed": {
-    "@type": "City",
-    "name": "Shkodër"
-  },
-  "availableLanguage": ["sq", "Albanian"],
-  "knowsAbout": [
-    "Mësime private",
-    "Matematikë",
-    "Anglisht",
-    "Gjermanisht",
-    "Italisht",
-    "Fizikë",
-    "Kimi",
-    "Biologji",
-    "Gjuhë shqipe",
-    "Letërsi",
-    "Math Kangaroo"
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Shkodër",
-    "addressRegion": "Shkodër County",
-    "addressCountry": "AL"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+355696147703",
-    "contactType": "customer service",
-    "availableLanguage": "Albanian"
-  },
-  "sameAs": [
-    "https://www.facebook.com/edushkoder",
-    "https://www.instagram.com/edushkoder"
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "12",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": {"@type": "Person", "name": "Andi M."},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "reviewBody": "Fëmija im përmirësoi notat e matematikës brenda dy muajve. Mësueset janë profesioniste të vërteta.",
-      "datePublished": "2026-01-10"
-    },
-    {
-      "@type": "Review",
-      "author": {"@type": "Person", "name": "Besa K."},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "reviewBody": "Gjeta mësuesen e gjermanishtes perfekte për vajzën time. Rezervimi ishte i lehtë dhe i shpejtë.",
-      "datePublished": "2026-02-15"
-    },
-    {
-      "@type": "Review",
-      "author": {"@type": "Person", "name": "Gent L."},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "reviewBody": "Shërbim i shkëlqyer. Mësueses së anglishtes i rekomanduam gjithë familjes tonë.",
-      "datePublished": "2026-03-05"
-    }
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Kurset e EduShkodër",
-    "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Mësime Private Matematikë Shkodër", "url": "https://edushkoder.com/matematike.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Mësime Private Anglisht Shkodër", "url": "https://edushkoder.com/anglisht.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Mësime Private Gjermanisht Shkodër", "url": "https://edushkoder.com/gjermanisht.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Mësime Private Italisht Shkodër", "url": "https://edushkoder.com/italisht.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Mësime Private Fizikë Shkodër", "url": "https://edushkoder.com/fizike.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Mësime Private Kimi Biologji Shkodër", "url": "https://edushkoder.com/kimi-biologji.html"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Math Kangaroo Shkodër (regjistrim & kontakte)", "url": "https://edushkoder.com/konkursi-kangur-shkoder.html", "description": "Kursi Math Kangaroo për Shqipërinë; faqe EduShkodër me qendra dhe numra sipas kangaroo.al."}}
-    ]
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": "https://edushkoder.com/",
-  "name": "EduShkodër",
-  "description": "Mësime private në Shkodër; faqe për kursin Math Kangaroo me kontakte lokale.",
-  "inLanguage": "sq",
-  "publisher": {"@type": "Organization", "name": "EduShkodër", "url": "https://edushkoder.com/"},
-  "relatedLink": ["https://edushkoder.com/konkursi-kangur-shkoder.html", "https://edushkoder.com/matematike.html"]
-}
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="site.js"></script>
