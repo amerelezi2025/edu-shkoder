@@ -303,7 +303,7 @@ function renderHeroQuickCourses() {
   if (!list) return;
 
   list.innerHTML = COURSES.slice(0, 4).map(course => `
-    <div class="hc-course"><i class="fas ${course.icon}"></i> ${escapeHtml(course.name)} <span class="hc-badge">${course.featured ? 'Prioritet' : 'Aktiv'}</span></div>
+    <div class="hc-course"><i class="fas ${course.icon}" aria-hidden="true"></i> ${escapeHtml(course.name)} <span class="hc-badge">${course.featured ? 'Prioritet' : 'Aktiv'}</span></div>
   `).join('');
 }
 
@@ -321,15 +321,15 @@ function renderCourseCards() {
       <div class="course-card-top ${course.featured ? 'has-spotlight' : ''}">
         ${course.featured ? `<span class="course-spotlight">${escapeHtml(course.featuredLabel || 'Më e kërkuar')}</span>` : ''}
         <span class="course-category-label">${escapeHtml(course.category)}</span>
-        <div class="course-icon-wrap" style="background:${course.gradient};"><i class="fas ${course.icon}"></i></div>
+        <div class="course-icon-wrap" style="background:${course.gradient};"><i class="fas ${course.icon}" aria-hidden="true"></i></div>
         <h3>${escapeHtml(course.name)}</h3>
       </div>
       <div class="course-card-body">
         <p class="course-desc">${escapeHtml(course.description)}</p>
         <div class="course-meta">
-          ${course.meta.map(item => `<span class="course-meta-item"><i class="fas fa-check"></i> ${escapeHtml(item)}</span>`).join('')}
+          ${course.meta.map(item => `<span class="course-meta-item"><i class="fas fa-check" aria-hidden="true"></i> ${escapeHtml(item)}</span>`).join('')}
         </div>
-        <a href="${courseHref}" class="btn-course"><i class="${courseIconClass}"></i> ${courseBtn}</a>
+        <a href="${courseHref}" class="btn-course"><i class="${courseIconClass}" aria-hidden="true"></i> ${courseBtn}</a>
       </div>
     </div>
     `;
@@ -346,19 +346,19 @@ function renderTeachers() {
       <div class="teacher-avatar" style="background:${teacher.accent};">${getInitials(teacher.name)}</div>
       <div class="teacher-name">${escapeHtml(teacher.name)}</div>
       <div class="teacher-subject">${escapeHtml(teacher.subject)}</div>
-      <div class="teacher-phone"><i class="fas fa-phone" style="color:var(--orange);margin-right:5px;font-size:0.75rem;"></i> ${escapeHtml(formatPhone(teacher.phone))}</div>
+      <div class="teacher-phone"><i class="fas fa-phone" style="color:var(--orange);margin-right:5px;font-size:0.75rem;" aria-hidden="true"></i> ${escapeHtml(formatPhone(teacher.phone))}</div>
       <div class="teacher-note">${escapeHtml(teacher.note || 'Klikoni WhatsApp ose Vendndodhja për kontakt të shpejtë.')}</div>
       <div class="teacher-actions">
         <a href="${teacher.phone ? `https://wa.me/${teacher.phone}` : buildOwnerRequestLink(teacher.name)}" target="_blank" class="teacher-btn teacher-btn-wa">
-          <i class="fab fa-whatsapp"></i> ${teacher.phone ? 'WhatsApp' : 'Kërko Kontaktin'}
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> ${teacher.phone ? 'WhatsApp' : 'Kërko Kontaktin'}
         </a>
         <a href="${teacherProfileHref(teacher)}" class="teacher-btn teacher-btn-profile">
-          <i class="fas fa-user"></i> Profili
+          <i class="fas fa-user" aria-hidden="true"></i> Profili
         </a>
         <a href="${teacher.maps}" target="_blank" class="teacher-btn teacher-btn-map">
-          <i class="fas fa-map-marker-alt"></i> Vendndodhja
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Vendndodhja
         </a>
-        ${teacher.instagram ? `<a href="${teacher.instagram}" target="_blank" class="teacher-btn" style="background:#e1306c;color:#fff;"><i class="fab fa-instagram"></i> Instagram</a>` : ''}
+        ${teacher.instagram ? `<a href="${teacher.instagram}" target="_blank" class="teacher-btn" style="background:#e1306c;color:#fff;"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>` : ''}
       </div>
     </div>
   `).join('');
@@ -400,16 +400,20 @@ window.addEventListener('scroll', () => {
 
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
+function setMobileMenu(open) {
+  mobileMenu.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', String(open));
+  hamburger.innerHTML = open
+    ? '<i class="fas fa-times" aria-hidden="true"></i>'
+    : '<i class="fas fa-bars" aria-hidden="true"></i>';
+}
+
 hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-  hamburger.innerHTML = mobileMenu.classList.contains('open')
-    ? '<i class="fas fa-times"></i>'
-    : '<i class="fas fa-bars"></i>';
+  setMobileMenu(!mobileMenu.classList.contains('open'));
 });
 
 mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-  mobileMenu.classList.remove('open');
-  hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+  setMobileMenu(false);
 }));
 
 const sections = document.querySelectorAll('section[id]');
@@ -471,8 +475,8 @@ function renderTeacherPicker() {
     const isSelected = selectedTeacher && selectedTeacher.name === teacher.name;
 
     return `
-      <div class="teacher-pick-card ${isSelected ? 'selected' : ''} ${selectedCourseId && !matches ? 'disabled' : ''}" data-teacher="${escapeHtml(teacher.name)}">
-        <div class="tp-check"><i class="fas fa-check"></i></div>
+      <div class="teacher-pick-card ${isSelected ? 'selected' : ''} ${selectedCourseId && !matches ? 'disabled' : ''}" data-teacher="${escapeHtml(teacher.name)}" role="button" tabindex="${selectedCourseId && !matches ? '-1' : '0'}" aria-pressed="${isSelected ? 'true' : 'false'}">
+        <div class="tp-check"><i class="fas fa-check" aria-hidden="true"></i></div>
         <div class="tp-avatar" style="background:${teacher.accent};">${getInitials(teacher.name)}</div>
         <div class="tp-name">${escapeHtml(teacher.name)}</div>
         <div class="tp-subj">${escapeHtml(teacher.subject)}</div>
@@ -480,14 +484,26 @@ function renderTeacherPicker() {
     `;
   }).join('');
 
+  function selectTeacherCard(card) {
+    document.querySelectorAll('.teacher-pick-card').forEach(item => {
+      item.classList.remove('selected');
+      item.setAttribute('aria-pressed', 'false');
+    });
+    card.classList.add('selected');
+    card.setAttribute('aria-pressed', 'true');
+    selectedTeacher = TEACHERS.find(teacher => teacher.name === card.dataset.teacher) || null;
+    updateBookingRouteNote();
+    validateForm();
+  }
+
   picker.querySelectorAll('.teacher-pick-card').forEach(card => {
     if (card.classList.contains('disabled')) return;
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.teacher-pick-card').forEach(item => item.classList.remove('selected'));
-      card.classList.add('selected');
-      selectedTeacher = TEACHERS.find(teacher => teacher.name === card.dataset.teacher) || null;
-      updateBookingRouteNote();
-      validateForm();
+    card.addEventListener('click', () => selectTeacherCard(card));
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectTeacherCard(card);
+      }
     });
   });
 }
@@ -525,6 +541,10 @@ function sendToWhatsApp() {
   const goal = document.getElementById('goal').value;
   const schedule = document.getElementById('schedule').value;
   const days = [...document.querySelectorAll('input[name="day"]:checked')].map(input => input.value).join(', ');
+  const optionalDetails = [
+    difficulty ? `Vështirësitë / kërkesa: ${difficulty}` : '',
+    goal ? `Qëllimi: ${goal}` : ''
+  ].filter(Boolean).join('\n');
 
   if (!selectedTeacher) {
     alert('Ju lutem zgjidhni një mësues/e!');
@@ -544,9 +564,7 @@ TË DHËNAT E KËRKESËS
 ━━━━━━━━━━━━━━━━━━━━
 Emri i nxënësit: ${name}${phone ? '\nTelefon kontakti: ' + phone : ''}
 Kursi i zgjedhur: ${course}
-Vështirësitë kryesore: ${difficulty || '—'}
-Qëllimi: ${goal || '—'}
-Ditët e preferuara: ${days}
+${optionalDetails ? optionalDetails + '\n' : ''}Ditët e preferuara: ${days}
 Orari i preferuar: ${schedule}
 ━━━━━━━━━━━━━━━━━━━━
 
@@ -554,9 +572,9 @@ Ju falënderoj për kohën dhe vëmendjen! Pres përgjigjen tuaj.`
   );
 
   // Dërgoni email njoftim me EmailJS
-  if (EMAILJS_SERVICE_ID !== 'VENDOS_SERVICE_ID_KETU') {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+  if (window.emailjs && EMAILJS_SERVICE_ID !== 'VENDOS_SERVICE_ID_KETU') {
+    window.emailjs.init(EMAILJS_PUBLIC_KEY);
+    window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
       student_name : name,
       student_phone: phone || '—',
       course       : course,
@@ -695,10 +713,24 @@ starPicker.querySelectorAll('i').forEach(star => {
   });
 
   star.addEventListener('click', function() {
-    reviewRating = parseInt(this.dataset.val, 10);
-    starPicker.querySelectorAll('i').forEach((item, index) => item.classList.toggle('active', index < reviewRating));
+    setReviewRating(parseInt(this.dataset.val, 10));
+  });
+
+  star.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setReviewRating(parseInt(this.dataset.val, 10));
+    }
   });
 });
+
+function setReviewRating(value) {
+  reviewRating = value;
+  starPicker.querySelectorAll('i').forEach((item, index) => {
+    item.classList.toggle('active', index < reviewRating);
+    item.setAttribute('aria-checked', index + 1 === reviewRating ? 'true' : 'false');
+  });
+}
 
 function renderReviews() {
   const list = document.getElementById('reviewsList');
@@ -708,7 +740,7 @@ function renderReviews() {
   }
 
   list.innerHTML = APPROVED_REVIEWS.slice().reverse().map(review => {
-    const stars = Array.from({ length: 5 }, (_, index) => `<i class="fas fa-star${index < review.rating ? '' : ' empty'}"></i>`).join('');
+    const stars = Array.from({ length: 5 }, (_, index) => `<i class="fas fa-star${index < review.rating ? '' : ' empty'}" aria-hidden="true"></i>`).join('');
     return `
       <div class="review-card">
         <div class="review-header">
@@ -719,7 +751,7 @@ function renderReviews() {
           </div>
         </div>
         <div class="review-stars">${stars}</div>
-        ${review.service ? `<div class="review-service"><i class="fas fa-book-open"></i>${escapeHtml(review.service)}</div>` : ''}
+        ${review.service ? `<div class="review-service"><i class="fas fa-book-open" aria-hidden="true"></i>${escapeHtml(review.service)}</div>` : ''}
         <div class="review-text">${escapeHtml(review.text)}</div>
       </div>`;
   }).join('');
@@ -730,7 +762,7 @@ function renderTestimonials() {
   if (!grid) return;
 
   grid.innerHTML = APPROVED_REVIEWS.map(review => {
-    const stars = Array.from({ length: 5 }, (_, index) => `<i class="fas fa-star${index < review.rating ? '' : ' empty'}"></i>`).join('');
+    const stars = Array.from({ length: 5 }, (_, index) => `<i class="fas fa-star${index < review.rating ? '' : ' empty'}" aria-hidden="true"></i>`).join('');
     return `
       <div class="testi-card">
         <div class="testi-quote">“</div>
@@ -793,7 +825,7 @@ Kam pranuar që komenti të shqyrtohet dhe, nëse miratohet, të publikohet në 
   document.getElementById('reviewText').value = '';
   document.getElementById('reviewConsent').checked = false;
   reviewRating = 0;
-  starPicker.querySelectorAll('i').forEach(item => item.classList.remove('active'));
+  setReviewRating(0);
   successMsg.style.display = 'block';
 }
 
@@ -810,3 +842,9 @@ renderTestimonials();
 observeReveals();
 updateBookingRouteNote();
 validateForm();
+
+document.querySelectorAll('i.fas, i.fab').forEach(icon => {
+  if (!icon.closest('#starPicker') && !icon.hasAttribute('aria-hidden')) {
+    icon.setAttribute('aria-hidden', 'true');
+  }
+});

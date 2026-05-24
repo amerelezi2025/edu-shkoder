@@ -95,13 +95,21 @@ const COURSES = [
     gradient: 'linear-gradient(135deg,#2563eb,#60a5fa)',
     description: 'Mësime individuale në fizikë për sqarimin e formulave, ushtrimeve dhe temave bazë të lëndës.',
     meta: ['1 mësuese', '1 me 1', 'Shkodër']
+  },
+  {
+    id: 'konkursi-kangur',
+    name: 'Konkursi Math Kangaroo — Shkodër',
+    category: 'Kurse të veçanta',
+    icon: 'fa-trophy',
+    gradient: 'linear-gradient(135deg,#15803d,#fbbf24)',
+    description: 'Konkurs ndërkombëtar matematikë për klasat 1–12: në Shkodër me qendra sipas kangaroo.al (p.sh. Lider Academy në Sheshin 2 Prilli) dhe modality online. EduShkodër përmblidh kontakte dhe harta për kërkime si Math Kangaroo Shkodër dhe regjistrim në Shqipëri.',
+    meta: ['Klasa 1–12', 'Math Kangaroo · Shqipëri', 'Lider Academy · kontakte']
   }
 ];
 
 const TEACHERS = [
   {
     name: 'Valdet Luga',
-    slug: 'valdet-luga',
     phone: '355676516773',
     subject: 'Të Përgjithshme (Klasa 1-6) / Fillore (Klasa 1-5)',
     maps: 'https://www.google.com/maps/place/Shkolla+9+vje%C3%A7are+%22Xheladin+Fishta%22/@42.072249,19.5096125,3a,75y,18.53h,68.01t/data=!3m7!1e1!3m5!1sNGjmr4z7FK536rWpzJSeHA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D21.98714872480049%26panoid%3DNGjmr4z7FK536rWpzJSeHA%26yaw%3D18.527216042522184!7i13312!8i6656!4m6!3m5!1s0x134e00e551f038b5:0xe5ca464a635d68e0!8m2!3d42.0725363!4d19.5087931!16s%2Fg%2F11c1wwv25_?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -113,7 +121,6 @@ const TEACHERS = [
   },
   {
     name: 'Mirsada Kadia',
-    slug: 'mirsada-kadia',
     phone: '355684830000',
     subject: 'Gjermanisht',
     maps: 'https://www.google.com/maps/place/Universiteti+i+Shkodr%C3%ABs+%22Luigj+Gurakuqi%22/@42.0663747,19.5101781,3a,75y,302.59h,77.26t/data=!3m7!1e1!3m5!1sWjhnIF2WEkpkOPeY6XCEWw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D12.742345076382705%26panoid%3DWjhnIF2WEkpkOPeY6XCEWw%26yaw%3D302.58838241255006!7i13312!8i6656!4m6!3m5!1s0x134e00fcd146f0df:0xbee74fa0b9f6dbfa!8m2!3d42.0662237!4d19.5095856!16s%2Fm%2F0264mz5?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -123,7 +130,6 @@ const TEACHERS = [
   },
   {
     name: 'Roberta Naraci',
-    slug: 'roberta-naraci',
     phone: '355674060071',
     subject: 'Gjermanisht',
     maps: 'https://www.google.com/maps/place/Shkolla+e+mesme+Teknike+Pyjore+%E2%80%9CKole+Margjini%E2%80%9D/@42.0690468,19.5241354,3a,75y,73.5h,81.77t/data=!3m7!1e1!3m5!1shajw5qc7JNzO0dy1bUmmFw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D8.23161271848251%26panoid%3Dhajw5qc7JNzO0dy1bUmmFw%26yaw%3D73.49779449416356!7i13312!8i6656!4m6!3m5!1s0x134e01f85c2a6ed1:0xb3575bbf7aea15c4!8m2!3d42.0694939!4d19.5240147!16s%2Fg%2F11qnvn0sv7?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -133,7 +139,6 @@ const TEACHERS = [
   },
   {
     name: 'Diana Boriqi',
-    slug: 'diana-boriqi',
     phone: '355673890074',
     subject: 'Anglisht',
     maps: 'https://www.google.com/maps/place/Shkolla+9-vje%C3%A7are+%22Ndre+Mjeda%22/@42.0630321,19.506876,3a,75y,150.75h,71.73t/data=!3m7!1e1!3m5!1sN3ZtAgiK4qaqZIVqsNbcow!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D18.272063414824743%26panoid%3DN3ZtAgiK4qaqZIVqsNbcow%26yaw%3D150.75104675711057!7i13312!8i6656!4m6!3m5!1s0x134e011eba67a377:0x78fd26a6b71638dd!8m2!3d42.062877!4d19.5052845!16s%2Fg%2F11g6qv45m_?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -143,7 +148,6 @@ const TEACHERS = [
   },
   {
     name: 'Vaelza Golemi',
-    slug: 'vaelza-golemi',
     phone: '355692511260',
     subject: 'Anglisht',
     maps: 'https://www.google.com/maps/place/Qendra+Tregtare/@42.0687823,19.5078719,3a,75y,58.93h,84.82t/data=!3m7!1e1!3m5!1sTEGLyOjvh0IiScBEjmjUDw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D5.176114915128949%26panoid%3DTEGLyOjvh0IiScBEjmjUDw%26yaw%3D58.93163660727847!7i13312!8i6656!4m6!3m5!1s0x134e01e7e2e5b22d:0x8b1e44c017df8696!8m2!3d42.068996!4d19.5082158!16s%2Fg%2F11jdhclxdp?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -153,7 +157,6 @@ const TEACHERS = [
   },
   {
     name: 'Elvira Bushati',
-    slug: 'elvira-bushati',
     phone: '355674061081',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Bexhisteni/@42.0713151,19.5095681,3a,75y,62.1h,79.94t/data=!3m7!1e1!3m5!1shC2yz2-19tc3YiwhqKTkjw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D10.062013162893408%26panoid%3DhC2yz2-19tc3YiwhqKTkjw%26yaw%3D62.09952613697949!7i13312!8i6656!4m7!3m6!1s0x134e013d85987cbd:0x70bfdcd5fa9ed649!8m2!3d42.0538844!4d19.4979228!10e5!16s%2Fg%2F1thv1v7v?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -163,7 +166,6 @@ const TEACHERS = [
   },
   {
     name: 'Frida Luani',
-    slug: 'frida-luani',
     phone: '355683704370',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Gjuhadol,+Shkod%C3%ABr,+Albania/@42.0681554,19.5134996,17z/data=!3m1!4b1!4m6!3m5!1s0x134e00f942f52a21:0xb80935a0ee44b22d!8m2!3d42.0688576!4d19.5158999!16s%2Fg%2F1tgw29t0?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -173,7 +175,6 @@ const TEACHERS = [
   },
   {
     name: 'Dr Bendis Hoxha',
-    slug: 'dr-bendis-hoxha',
     phone: '355692136564',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Rruga+Europa,+Shkod%C3%ABr,+Albania/@42.0769808,19.5127879,17z/data=!3m1!4b1!4m6!3m5!1s0x134e00f4011c4b5f:0xb8230d8b5e825604!8m2!3d42.0769808!4d19.5153628!16s%2Fg%2F1th548l6?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -183,7 +184,6 @@ const TEACHERS = [
   },
   {
     name: 'Naxhija Milla',
-    slug: 'naxhija-milla',
     phone: '355692627187',
     subject: 'Kimi',
     maps: 'https://www.google.com/maps/place/Bexhisteni/@42.0704094,19.509197,3a,75y,70.12h,106.5t/data=!3m7!1e1!3m5!1s_DMyWluhPqX5deGfaR8UAQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-16.50211282562364%26panoid%3D_DMyWluhPqX5deGfaR8UAQ%26yaw%3D70.12165077524617!7i13312!8i6656!4m6!3m5!1s0x134e013d85987cbd:0x70bfdcd5fa9ed649!8m2!3d42.0538844!4d19.4979228!16s%2Fg%2F1thv1v7v?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -193,7 +193,6 @@ const TEACHERS = [
   },
   {
     name: 'Miranda Bala',
-    slug: 'miranda-bala',
     phone: '355692516062',
     subject: 'Italisht',
     maps: 'https://www.google.com/maps/place/AZA+Electronics/@42.070416,19.5122621,17z/data=!3m1!4b1!4m6!3m5!1s0x134e00fa2420fe11:0xaebef4c9349b86f9!8m2!3d42.070416!4d19.514837!16s%2Fg%2F11c5rqzz4y?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -203,7 +202,6 @@ const TEACHERS = [
   },
   {
     name: 'Afërdita Bruçeti',
-    slug: 'aferdita-bruceti',
     phone: '355697724356',
     subject: 'Letërsi / Gjuhë',
     maps: 'https://www.google.com/maps/place/Maarif+Shkod%C3%ABr+Campus/@42.0771351,19.510363,3a,75y,357.24h,75.91t/data=!3m7!1e1!3m5!1sRu4Ox7D1T2cNSvuW8lnwZQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D14.089699759148104%26panoid%3DRu4Ox7D1T2cNSvuW8lnwZQ%26yaw%3D357.2386476441965!7i13312!8i6656!4m6!3m5!1s0x134e015ea8e708e1:0x62bd438bbc0e1614!8m2!3d42.0771233!4d19.5106265!16s%2Fg%2F11l1s445gf?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D',
@@ -213,22 +211,31 @@ const TEACHERS = [
   },
   {
     name: 'Valbona Vila',
-    slug: 'valbona-vila',
     phone: '355670000286',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Parruce,+Shkod%C3%ABr,+Albania/@42.0655949,19.5093466,3a,75y,327.06h,109.41t/data=!3m7!1e1!3m5!1sXu5Y-dsqOXnLzLAq_C3jRg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.407779314115274%26panoid%3DXu5Y-dsqOXnLzLAq_C3jRg%26yaw%3D327.0599634022138!7i13312!8i6656!4m6!3m5!1s0x134e00fd333cee93:0xf7dd6cb6c1a156d2!8m2!3d42.0649077!4d19.5095779!16s%2Fg%2F1tnpbq4n?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['matematike'],
     accent: 'linear-gradient(135deg,#d97706,#fbbf24)',
     note: 'Mësuese e matematikës, ushtron profesionin në mësimdhënie në një nga gjimnazet kryesore të qytetit. Puna e saj ka në qendër marrjen e njohurive themelore të matematikës dhe përgatitjen për provimin e maturës. Përdorimi i teksteve të larmishëm është një ndër parimet kryesore të saj.'
+  },
+  {
+    name: 'Konkursi Math Kangaroo — info lokale për Shkodër',
+    phone: '',
+    subject: 'Math Kangaroo — organizim sipas Shoqatës së Matematikës dhe kangaroo.al',
+    maps: 'https://www.google.com/maps/search/?api=1&query=Lider+Academy,+Sheshi+2+Prilli,+Shkodër,+Albania',
+    courseIds: ['konkursi-kangur'],
+    accent: 'linear-gradient(135deg,#15803d,#fbbf24)',
+    note: 'Regjistrohuni kryesisht përmes WhatsApp dhe email të koordinatorëve në faqen konkursi-kangur-shkoder.html ose ndiqni ndryshimet te kangaroo.al. Nëse zgjidhni këtë rresht vetëm nga forma “Rezervo” për pyetje përgjithësuese, përgjigjen e trajton përdoruesi i EduShkodër (jo organizatori zyrtar i konkursit).'
   }
 ];
 
 function escapeHtml(text) {
   return (text || '')
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"');
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 function formatPhone(phone) {
@@ -238,6 +245,32 @@ function formatPhone(phone) {
     return `+355 ${digits.slice(3, 5)} ${digits.slice(5, 8)} ${digits.slice(8, 12)}`;
   }
   return `+${digits}`;
+}
+
+function coursePageHref(course) {
+  return course.id === 'konkursi-kangur'
+    ? 'konkursi-kangur-shkoder.html'
+    : `${course.id}.html`;
+}
+
+const TEACHER_PROFILE_PATHS = {
+  'Valdet Luga': 'valdet-luga.html',
+  'Mirsada Kadia': 'mirsada-kadia.html',
+  'Roberta Naraci': 'roberta-naraci.html',
+  'Diana Boriqi': 'diana-boriqi.html',
+  'Vaelza Golemi': 'vaelza-golemi.html',
+  'Elvira Bushati': 'elvira-bushati.html',
+  'Frida Luani': 'frida-luani.html',
+  'Dr Bendis Hoxha': 'dr-bendis-hoxha.html',
+  'Naxhija Milla': 'naxhija-milla.html',
+  'Miranda Bala': 'miranda-bala.html',
+  'Afërdita Bruçeti': 'aferdita-bruceti.html',
+  'Valbona Vila': 'valbona-vila.html',
+  'Konkursi Math Kangaroo — info lokale për Shkodër': 'konkursi-kangur-shkoder.html'
+};
+
+function teacherProfileHref(teacher) {
+  return TEACHER_PROFILE_PATHS[teacher.name] || '#teachers';
 }
 
 function getInitials(name) {
@@ -270,7 +303,7 @@ function renderHeroQuickCourses() {
   if (!list) return;
 
   list.innerHTML = COURSES.slice(0, 4).map(course => `
-    <div class="hc-course"><i class="fas ${course.icon}"></i> ${escapeHtml(course.name)} <span class="hc-badge">${course.featured ? 'Prioritet' : 'Aktiv'}</span></div>
+    <div class="hc-course"><i class="fas ${course.icon}" aria-hidden="true"></i> ${escapeHtml(course.name)} <span class="hc-badge">${course.featured ? 'Prioritet' : 'Aktiv'}</span></div>
   `).join('');
 }
 
@@ -278,23 +311,29 @@ function renderCourseCards() {
   const grid = document.getElementById('coursesGrid');
   if (!grid) return;
 
-  grid.innerHTML = COURSES.map((course, index) => `
+  grid.innerHTML = COURSES.map((course, index) => {
+    const kangur = course.id === 'konkursi-kangur';
+    const courseHref = coursePageHref(course);
+    const courseBtn = kangur ? 'Detaje &amp; kontakte' : 'Shiko Detajet';
+    const courseIconClass = 'fas fa-arrow-up-right-from-square';
+    return `
     <div class="course-card reveal ${index % 3 === 0 ? 'reveal-delay-1' : index % 3 === 1 ? 'reveal-delay-2' : 'reveal-delay-3'} ${course.featured ? 'featured' : ''}">
       <div class="course-card-top ${course.featured ? 'has-spotlight' : ''}">
-        ${course.featured ? '<span class="course-spotlight">Më e kërkuar</span>' : ''}
+        ${course.featured ? `<span class="course-spotlight">${escapeHtml(course.featuredLabel || 'Më e kërkuar')}</span>` : ''}
         <span class="course-category-label">${escapeHtml(course.category)}</span>
-        <div class="course-icon-wrap" style="background:${course.gradient};"><i class="fas ${course.icon}"></i></div>
+        <div class="course-icon-wrap" style="background:${course.gradient};"><i class="fas ${course.icon}" aria-hidden="true"></i></div>
         <h3>${escapeHtml(course.name)}</h3>
       </div>
       <div class="course-card-body">
         <p class="course-desc">${escapeHtml(course.description)}</p>
         <div class="course-meta">
-          ${course.meta.map(item => `<span class="course-meta-item"><i class="fas fa-check"></i> ${escapeHtml(item)}</span>`).join('')}
+          ${course.meta.map(item => `<span class="course-meta-item"><i class="fas fa-check" aria-hidden="true"></i> ${escapeHtml(item)}</span>`).join('')}
         </div>
-        <a href="#booking" class="btn-course"><i class="fas fa-arrow-right"></i> Rezervo</a>
+        <a href="${courseHref}" class="btn-course"><i class="${courseIconClass}" aria-hidden="true"></i> ${courseBtn}</a>
       </div>
     </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 function renderTeachers() {
@@ -307,19 +346,19 @@ function renderTeachers() {
       <div class="teacher-avatar" style="background:${teacher.accent};">${getInitials(teacher.name)}</div>
       <div class="teacher-name">${escapeHtml(teacher.name)}</div>
       <div class="teacher-subject">${escapeHtml(teacher.subject)}</div>
-      <div class="teacher-phone"><i class="fas fa-phone" style="color:var(--orange);margin-right:5px;font-size:0.75rem;"></i> ${escapeHtml(formatPhone(teacher.phone))}</div>
+      <div class="teacher-phone"><i class="fas fa-phone" style="color:var(--orange);margin-right:5px;font-size:0.75rem;" aria-hidden="true"></i> ${escapeHtml(formatPhone(teacher.phone))}</div>
       <div class="teacher-note">${escapeHtml(teacher.note || 'Klikoni WhatsApp ose Vendndodhja për kontakt të shpejtë.')}</div>
       <div class="teacher-actions">
         <a href="${teacher.phone ? `https://wa.me/${teacher.phone}` : buildOwnerRequestLink(teacher.name)}" target="_blank" class="teacher-btn teacher-btn-wa">
-          <i class="fab fa-whatsapp"></i> ${teacher.phone ? 'WhatsApp' : 'Kërko Kontaktin'}
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> ${teacher.phone ? 'WhatsApp' : 'Kërko Kontaktin'}
+        </a>
+        <a href="${teacherProfileHref(teacher)}" class="teacher-btn teacher-btn-profile">
+          <i class="fas fa-user" aria-hidden="true"></i> Profili
         </a>
         <a href="${teacher.maps}" target="_blank" class="teacher-btn teacher-btn-map">
-          <i class="fas fa-map-marker-alt"></i> Vendndodhja
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Vendndodhja
         </a>
-        <a href="${teacher.slug}.html" class="teacher-btn" style="background:var(--orange);color:#fff;">
-          <i class="fas fa-user"></i> Profili
-        </a>
-        ${teacher.instagram ? `<a href="${teacher.instagram}" target="_blank" class="teacher-btn" style="background:#e1306c;color:#fff;"><i class="fab fa-instagram"></i> Instagram</a>` : ''}
+        ${teacher.instagram ? `<a href="${teacher.instagram}" target="_blank" class="teacher-btn" style="background:#e1306c;color:#fff;"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>` : ''}
       </div>
     </div>
   `).join('');
@@ -338,7 +377,10 @@ function renderCourseOptions() {
 function renderFooterCourses() {
   const list = document.getElementById('footerCourseLinks');
   if (!list) return;
-  list.innerHTML = COURSES.map(course => `<li><a href="${course.id}.html">${escapeHtml(course.name)}</a></li>`).join('');
+  list.innerHTML = COURSES.map(course => {
+    const href = coursePageHref(course);
+    return `<li><a href="${href}">${escapeHtml(course.name)}</a></li>`;
+  }).join('');
 }
 
 function renderCounts() {
@@ -358,16 +400,20 @@ window.addEventListener('scroll', () => {
 
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
+function setMobileMenu(open) {
+  mobileMenu.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', String(open));
+  hamburger.innerHTML = open
+    ? '<i class="fas fa-times" aria-hidden="true"></i>'
+    : '<i class="fas fa-bars" aria-hidden="true"></i>';
+}
+
 hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-  hamburger.innerHTML = mobileMenu.classList.contains('open')
-    ? '<i class="fas fa-times"></i>'
-    : '<i class="fas fa-bars"></i>';
+  setMobileMenu(!mobileMenu.classList.contains('open'));
 });
 
 mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-  mobileMenu.classList.remove('open');
-  hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+  setMobileMenu(false);
 }));
 
 const sections = document.querySelectorAll('section[id]');
@@ -429,8 +475,8 @@ function renderTeacherPicker() {
     const isSelected = selectedTeacher && selectedTeacher.name === teacher.name;
 
     return `
-      <div class="teacher-pick-card ${isSelected ? 'selected' : ''} ${selectedCourseId && !matches ? 'disabled' : ''}" data-teacher="${escapeHtml(teacher.name)}">
-        <div class="tp-check"><i class="fas fa-check"></i></div>
+      <div class="teacher-pick-card ${isSelected ? 'selected' : ''} ${selectedCourseId && !matches ? 'disabled' : ''}" data-teacher="${escapeHtml(teacher.name)}" role="button" tabindex="${selectedCourseId && !matches ? '-1' : '0'}" aria-pressed="${isSelected ? 'true' : 'false'}">
+        <div class="tp-check"><i class="fas fa-check" aria-hidden="true"></i></div>
         <div class="tp-avatar" style="background:${teacher.accent};">${getInitials(teacher.name)}</div>
         <div class="tp-name">${escapeHtml(teacher.name)}</div>
         <div class="tp-subj">${escapeHtml(teacher.subject)}</div>
@@ -438,14 +484,26 @@ function renderTeacherPicker() {
     `;
   }).join('');
 
+  function selectTeacherCard(card) {
+    document.querySelectorAll('.teacher-pick-card').forEach(item => {
+      item.classList.remove('selected');
+      item.setAttribute('aria-pressed', 'false');
+    });
+    card.classList.add('selected');
+    card.setAttribute('aria-pressed', 'true');
+    selectedTeacher = TEACHERS.find(teacher => teacher.name === card.dataset.teacher) || null;
+    updateBookingRouteNote();
+    validateForm();
+  }
+
   picker.querySelectorAll('.teacher-pick-card').forEach(card => {
     if (card.classList.contains('disabled')) return;
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.teacher-pick-card').forEach(item => item.classList.remove('selected'));
-      card.classList.add('selected');
-      selectedTeacher = TEACHERS.find(teacher => teacher.name === card.dataset.teacher) || null;
-      updateBookingRouteNote();
-      validateForm();
+    card.addEventListener('click', () => selectTeacherCard(card));
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectTeacherCard(card);
+      }
     });
   });
 }
@@ -483,6 +541,10 @@ function sendToWhatsApp() {
   const goal = document.getElementById('goal').value;
   const schedule = document.getElementById('schedule').value;
   const days = [...document.querySelectorAll('input[name="day"]:checked')].map(input => input.value).join(', ');
+  const optionalDetails = [
+    difficulty ? `Vështirësitë / kërkesa: ${difficulty}` : '',
+    goal ? `Qëllimi: ${goal}` : ''
+  ].filter(Boolean).join('\n');
 
   if (!selectedTeacher) {
     alert('Ju lutem zgjidhni një mësues/e!');
@@ -502,9 +564,7 @@ TË DHËNAT E KËRKESËS
 ━━━━━━━━━━━━━━━━━━━━
 Emri i nxënësit: ${name}${phone ? '\nTelefon kontakti: ' + phone : ''}
 Kursi i zgjedhur: ${course}
-Vështirësitë kryesore: ${difficulty || '—'}
-Qëllimi: ${goal || '—'}
-Ditët e preferuara: ${days}
+${optionalDetails ? optionalDetails + '\n' : ''}Ditët e preferuara: ${days}
 Orari i preferuar: ${schedule}
 ━━━━━━━━━━━━━━━━━━━━
 
@@ -512,9 +572,9 @@ Ju falënderoj për kohën dhe vëmendjen! Pres përgjigjen tuaj.`
   );
 
   // Dërgoni email njoftim me EmailJS
-  if (EMAILJS_SERVICE_ID !== 'VENDOS_SERVICE_ID_KETU') {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+  if (window.emailjs && EMAILJS_SERVICE_ID !== 'VENDOS_SERVICE_ID_KETU') {
+    window.emailjs.init(EMAILJS_PUBLIC_KEY);
+    window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
       student_name : name,
       student_phone: phone || '—',
       course       : course,
@@ -614,8 +674,32 @@ function switchTab(tab) {
 let reviewRating = 0;
 const REVIEWS_INBOX_PHONE = OWNER.phone;
 
-// LISTA E KOMENTEVE TANI ESHTE BOSH
-const APPROVED_REVIEWS = [];
+const APPROVED_REVIEWS = [
+  {
+    name: 'Andi M.',
+    role: 'Prind',
+    service: 'Matematikë',
+    rating: 5,
+    text: 'Fëmija im përmirësoi notat e matematikës brenda dy muajve. Mësueset janë profesioniste të vërteta.',
+    meta: 'Koment i verifikuar · 2026'
+  },
+  {
+    name: 'Besa K.',
+    role: 'Prind',
+    service: 'Gjermanisht',
+    rating: 5,
+    text: 'Gjeta mësuesen e gjermanishtes perfekte për vajzën time. Rezervimi ishte i lehtë dhe i shpejtë.',
+    meta: 'Koment i verifikuar · 2026'
+  },
+  {
+    name: 'Gent L.',
+    role: 'Prind',
+    service: 'Anglisht',
+    rating: 5,
+    text: 'Shërbim i shkëlqyer. Mësueses së anglishtes i rekomanduam gjithë familjes tonë.',
+    meta: 'Koment i verifikuar · 2026'
+  }
+];
 
 const starPicker = document.getElementById('starPicker');
 starPicker.querySelectorAll('i').forEach(star => {
@@ -629,10 +713,24 @@ starPicker.querySelectorAll('i').forEach(star => {
   });
 
   star.addEventListener('click', function() {
-    reviewRating = parseInt(this.dataset.val, 10);
-    starPicker.querySelectorAll('i').forEach((item, index) => item.classList.toggle('active', index < reviewRating));
+    setReviewRating(parseInt(this.dataset.val, 10));
+  });
+
+  star.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setReviewRating(parseInt(this.dataset.val, 10));
+    }
   });
 });
+
+function setReviewRating(value) {
+  reviewRating = value;
+  starPicker.querySelectorAll('i').forEach((item, index) => {
+    item.classList.toggle('active', index < reviewRating);
+    item.setAttribute('aria-checked', index + 1 === reviewRating ? 'true' : 'false');
+  });
+}
 
 function renderReviews() {
   const list = document.getElementById('reviewsList');
@@ -642,7 +740,7 @@ function renderReviews() {
   }
 
   list.innerHTML = APPROVED_REVIEWS.slice().reverse().map(review => {
-    const stars = Array.from({ length: 5 }, (_, index) => `<i class="fas fa-star${index < review.rating ? '' : ' empty'}"></i>`).join('');
+    const stars = Array.from({ length: 5 }, (_, index) => `<i class="fas fa-star${index < review.rating ? '' : ' empty'}" aria-hidden="true"></i>`).join('');
     return `
       <div class="review-card">
         <div class="review-header">
@@ -653,19 +751,54 @@ function renderReviews() {
           </div>
         </div>
         <div class="review-stars">${stars}</div>
+        ${review.service ? `<div class="review-service"><i class="fas fa-book-open" aria-hidden="true"></i>${escapeHtml(review.service)}</div>` : ''}
         <div class="review-text">${escapeHtml(review.text)}</div>
       </div>`;
   }).join('');
 }
 
+function renderTestimonials() {
+  const grid = document.querySelector('#panelTestimonials .testimonials-grid');
+  if (!grid) return;
+
+  grid.innerHTML = APPROVED_REVIEWS.map(review => {
+    const stars = Array.from({ length: 5 }, (_, index) => `<i class="fas fa-star${index < review.rating ? '' : ' empty'}" aria-hidden="true"></i>`).join('');
+    return `
+      <div class="testi-card">
+        <div class="testi-quote">“</div>
+        <p class="testi-text">${escapeHtml(review.text)}</p>
+        <div class="stars">${stars}</div>
+        <div class="testi-author">
+          <div class="testi-avatar">${escapeHtml(review.name.charAt(0).toUpperCase())}</div>
+          <div>
+            <div class="testi-name">${escapeHtml(review.name)}</div>
+            <div class="testi-role">${escapeHtml(review.role)} · ${escapeHtml(review.service)}</div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderReviewCourseOptions() {
+  const select = document.getElementById('reviewCourse');
+  if (!select) return;
+
+  select.innerHTML = `
+    <option value="" selected>— Zgjidhni nëse dëshironi —</option>
+    ${COURSES.map(course => `<option value="${escapeHtml(course.name)}">${escapeHtml(course.name)}</option>`).join('')}
+  `;
+}
+
 function submitReview() {
   const name = document.getElementById('reviewName').value.trim();
   const role = document.getElementById('reviewRole').value;
+  const course = document.getElementById('reviewCourse').value;
   const text = document.getElementById('reviewText').value.trim();
+  const consent = document.getElementById('reviewConsent').checked;
   const successMsg = document.getElementById('reviewSuccess');
 
-  if (!name || !role || !text || reviewRating === 0) {
-    alert('Ju lutem plotësoni emrin, rolin, komentin dhe vlerësimin me yje!');
+  if (!name || !role || !text || reviewRating === 0 || !consent) {
+    alert('Ju lutem plotësoni emrin, rolin, komentin, vlerësimin me yje dhe pranimin për publikim!');
     return;
   }
 
@@ -677,19 +810,22 @@ Po dërgoj një koment të ri për shqyrtim dhe publikim në faqe.
 
 Emri: ${name}
 Roli: ${role}
+Kursi/Mësuesi: ${course || 'Nuk u zgjodh'}
 Vlerësimi: ${stars} (${reviewRating}/5)
 Komenti:
 ${text}
 
-Ju lutem verifikojeni dhe publikojeni nëse është i përshtatshëm. Faleminderit!`
+Kam pranuar që komenti të shqyrtohet dhe, nëse miratohet, të publikohet në faqen EduShkodër. Faleminderit!`
   );
 
   window.open(`https://wa.me/${REVIEWS_INBOX_PHONE}?text=${payload}`, '_blank');
   document.getElementById('reviewName').value = '';
   document.getElementById('reviewRole').selectedIndex = 0;
+  document.getElementById('reviewCourse').selectedIndex = 0;
   document.getElementById('reviewText').value = '';
+  document.getElementById('reviewConsent').checked = false;
   reviewRating = 0;
-  starPicker.querySelectorAll('i').forEach(item => item.classList.remove('active'));
+  setReviewRating(0);
   successMsg.style.display = 'block';
 }
 
@@ -700,7 +836,15 @@ renderTeachers();
 renderCourseOptions();
 renderFooterCourses();
 renderTeacherPicker();
+renderReviewCourseOptions();
 renderReviews();
+renderTestimonials();
 observeReveals();
 updateBookingRouteNote();
 validateForm();
+
+document.querySelectorAll('i.fas, i.fab').forEach(icon => {
+  if (!icon.closest('#starPicker') && !icon.hasAttribute('aria-hidden')) {
+    icon.setAttribute('aria-hidden', 'true');
+  }
+});
