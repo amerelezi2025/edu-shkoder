@@ -49,7 +49,7 @@ const COURSES = [
     icon: 'fa-language',
     gradient: 'linear-gradient(135deg,#059669,#34d399)',
     description: 'Mësime individuale në anglisht për nxënës që duan të përmirësojnë gjuhën, notat ose komunikimin e përditshëm.',
-    meta: ['2 mësuese', '1 me 1', 'Shkodër']
+    meta: ['1 mësuese', '1 me 1', 'Shkodër']
   },
   {
     id: 'gjermanisht',
@@ -145,15 +145,6 @@ const TEACHERS = [
     courseIds: ['anglisht'],
     accent: 'linear-gradient(135deg,#059669,#34d399)',
     note: 'Ndër mësueset më të suksesshme të anglishtes, ushtron profesionin në njërën nga shkollat kryesore të qytetit. Mësimet e saj bazohen në komunikim aktiv dhe metoda frymëzuese. Dedikimi dhe profesionalizmi i saj e bëjnë atë një nga zgjedhjet më të mira për nxënës të çdo niveli.'
-  },
-  {
-    name: 'Vaelza Golemi',
-    phone: '355692511260',
-    subject: 'Anglisht',
-    maps: 'https://www.google.com/maps/place/Qendra+Tregtare/@42.0687823,19.5078719,3a,75y,58.93h,84.82t/data=!3m7!1e1!3m5!1sTEGLyOjvh0IiScBEjmjUDw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D5.176114915128949%26panoid%3DTEGLyOjvh0IiScBEjmjUDw%26yaw%3D58.93163660727847!7i13312!8i6656!4m6!3m5!1s0x134e01e7e2e5b22d:0x8b1e44c017df8696!8m2!3d42.068996!4d19.5082158!16s%2Fg%2F11jdhclxdp?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
-    courseIds: ['anglisht'],
-    accent: 'linear-gradient(135deg,#34d399,#6ee7b7)',
-    note: 'Mësuese me përvojë, ushtron profesionin në një nga shkollat elitare të qytetit. Puna e saj ka në qendër komunikimin dhe mësimin jashtë kornizave të metodave tradicionale. Empatia dhe komunikimi janë thelbësore në punën e saj me nxënës të çdo moshe dhe klase.'
   },
   {
     name: 'Elvira Bushati',
@@ -258,7 +249,6 @@ const TEACHER_PROFILE_PATHS = {
   'Mirsada Kadia': 'mirsada-kadia.html',
   'Roberta Naraci': 'roberta-naraci.html',
   'Diana Boriqi': 'diana-boriqi.html',
-  'Vaelza Golemi': 'vaelza-golemi.html',
   'Elvira Bushati': 'elvira-bushati.html',
   'Frida Luani': 'frida-luani.html',
   'Dr Bendis Hoxha': 'dr-bendis-hoxha.html',
