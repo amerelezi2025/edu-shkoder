@@ -126,7 +126,8 @@ const TEACHERS = [
     maps: 'https://www.google.com/maps/place/Universiteti+i+Shkodr%C3%ABs+%22Luigj+Gurakuqi%22/@42.0663747,19.5101781,3a,75y,302.59h,77.26t/data=!3m7!1e1!3m5!1sWjhnIF2WEkpkOPeY6XCEWw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D12.742345076382705%26panoid%3DWjhnIF2WEkpkOPeY6XCEWw%26yaw%3D302.58838241255006!7i13312!8i6656!4m6!3m5!1s0x134e00fcd146f0df:0xbee74fa0b9f6dbfa!8m2!3d42.0662237!4d19.5095856!16s%2Fm%2F0264mz5?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['gjermanisht'],
     accent: 'linear-gradient(135deg,#0ea5e9,#38bdf8)',
-    note: 'Ndër mësueset më të kërkuara të gjermanishtes në Shkodër, me përvojë solide dhe metodologji të provuar. Ushtron profesionin në disa nga shkollat më të mira të qytetit dhe njihet për qasjen e saj të personalizuar. Nxënësit e saj arrijnë vazhdimisht rezultate ndër më të larta.'
+    note: 'Ndër mësueset më të kërkuara të gjermanishtes në Shkodër, me përvojë solide dhe metodologji të provuar. Ushtron profesionin në disa nga shkollat më të mira të qytetit dhe njihet për qasjen e saj të personalizuar. Nxënësit e saj arrijnë vazhdimisht rezultate ndër më të larta.',
+    instagram: 'https://www.instagram.com/easy.international.courses/'
   },
   {
     name: 'Roberta Naraci',
@@ -189,7 +190,8 @@ const TEACHERS = [
     maps: 'https://www.google.com/maps/place/AZA+Electronics/@42.070416,19.5122621,17z/data=!3m1!4b1!4m6!3m5!1s0x134e00fa2420fe11:0xaebef4c9349b86f9!8m2!3d42.070416!4d19.514837!16s%2Fg%2F11c5rqzz4y?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['italisht'],
     accent: 'linear-gradient(135deg,#dc2626,#f87171)',
-    note: 'Mësuese e italishtes me njohuri të thella dhe pasion të madh për gjuhën. Ushtron profesionin me entuziazëm dhe dedikimi të pakufizuar. Nxënësit e saj dallohen për aftësinë e tyre komunikuese dhe rezultatet ndër të larta.'
+    note: 'Mësuese e italishtes me njohuri të thella dhe pasion të madh për gjuhën. Ushtron profesionin me entuziazëm dhe dedikimi të pakufizuar. Nxënësit e saj dallohen për aftësinë e tyre komunikuese dhe rezultatet ndër të larta.',
+    instagram: 'https://www.instagram.com/easy.international.courses/'
   },
   {
     name: 'Afërdita Bruçeti',
