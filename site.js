@@ -121,7 +121,7 @@ const TEACHERS = [
   },
   {
     name: 'Mirsada Kadia',
-    phone: '355684830000',
+    phone: '355694830000',
     subject: 'Gjermanisht',
     maps: 'https://www.google.com/maps/place/Universiteti+i+Shkodr%C3%ABs+%22Luigj+Gurakuqi%22/@42.0663747,19.5101781,3a,75y,302.59h,77.26t/data=!3m7!1e1!3m5!1sWjhnIF2WEkpkOPeY6XCEWw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D12.742345076382705%26panoid%3DWjhnIF2WEkpkOPeY6XCEWw%26yaw%3D302.58838241255006!7i13312!8i6656!4m6!3m5!1s0x134e00fcd146f0df:0xbee74fa0b9f6dbfa!8m2!3d42.0662237!4d19.5095856!16s%2Fm%2F0264mz5?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['gjermanisht'],
