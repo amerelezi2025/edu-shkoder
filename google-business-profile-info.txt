@@ -39,5 +39,11 @@ Social profiles shown on the website:
 https://www.facebook.com/edushkoder
 https://www.instagram.com/edushkoder
 
+Google Search Console:
+1. Open https://search.google.com/search-console
+2. Add property https://edushkoder.com/
+3. Choose HTML tag verification
+4. Copy the meta tag content value into index.html (google-site-verification meta tag is prepared in the homepage head comment)
+
 Important:
 Google Business Profile must be created or verified while logged into the owner's Google account. After verification, add real photos, hours or "by appointment" availability, and ask real parents/students for reviews.
