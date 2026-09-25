@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="sq">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -129,6 +129,10 @@
 }
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
@@ -248,7 +252,19 @@
 
     /* TEACHERS */
     #teachers { padding: 96px 0; background: var(--white); }
-    .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 52px; }
+    .teacher-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 14px; margin-top: 36px; }
+    .teacher-search-wrap { position: relative; }
+    .teacher-search-wrap i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--gray); font-size: 0.85rem; }
+    .teacher-search-wrap input, .teacher-toolbar select { width: 100%; border: 2px solid var(--gray-mid); border-radius: 14px; padding: 13px 16px 13px 42px; font-family: 'Nunito', sans-serif; font-size: 0.95rem; background: var(--white); color: var(--dark); }
+    .teacher-toolbar select { padding-left: 16px; cursor: pointer; }
+    .teacher-filter-note { margin: 12px 0 0; font-size: 0.85rem; color: var(--gray); text-align: center; }
+    .teacher-empty { grid-column: 1 / -1; text-align: center; padding: 48px 24px; border: 2px dashed var(--gray-mid); border-radius: var(--radius-lg); color: var(--gray); }
+    .teacher-empty i { font-size: 2rem; color: var(--orange); margin-bottom: 12px; display: block; }
+    .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 28px; }
+    .mobile-book-cta { display: none; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1200; background: linear-gradient(135deg, var(--orange), var(--yellow)); color: #fff; text-decoration: none; border-radius: 999px; padding: 14px 18px; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 0.92rem; box-shadow: 0 12px 32px rgba(255,107,53,0.35); align-items: center; justify-content: center; gap: 10px; transition: var(--transition); }
+    .mobile-book-cta.hidden { opacity: 0; pointer-events: none; transform: translateY(12px); }
+    .form-hint { font-size: 0.78rem; color: #dc2626; margin-top: 6px; min-height: 1rem; }
+    .privacy-note { margin-top: 10px; font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.5; max-width: 420px; }
     .teacher-card { background: var(--white); border: 2px solid var(--gray-mid); border-radius: var(--radius-lg); padding: 32px 28px; transition: var(--transition); text-align: center; position: relative; overflow: hidden; }
     .teacher-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange), var(--yellow)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
     .teacher-card:hover { border-color: var(--orange); box-shadow: var(--shadow-lg); transform: translateY(-5px); }
@@ -483,7 +499,9 @@
       .hero-btns { flex-direction: column; }
       .hero-btns .btn-white, .hero-btns .btn-outline-white { width: 100%; justify-content: center; }
       .teacher-picker { grid-template-columns: 1fr 1fr; }
-      .whatsapp-float { width: 52px; height: 52px; right: 20px; bottom: 20px; }
+      .whatsapp-float { width: 52px; height: 52px; right: 20px; bottom: 84px; }
+      .mobile-book-cta { display: flex; }
+      .teacher-toolbar { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -606,6 +624,7 @@
       <h2 class="section-title">Mësuesit Tanë</h2>
       <p class="section-subtitle">Zgjidhni mësuesin/en tuaj dhe kontaktojini drejtpërdrejt për të rezervuar orarin.</p>
     </div>
+    <div id="teacherToolbar"></div>
     <div class="teachers-grid" id="teachersGrid"></div>
   </div>
 </section>
@@ -659,7 +678,8 @@
         </div>
         <div class="form-group">
           <label for="studentPhone">Nr. Telefonit (opsional)</label>
-          <input type="tel" id="studentPhone" placeholder="+355 6X XXX XXXX" />
+          <input type="tel" id="studentPhone" placeholder="+355 6X XXX XXXX" inputmode="tel" autocomplete="tel" />
+          <div class="form-hint" id="studentPhoneHint" aria-live="polite"></div>
         </div>
 
         <div class="form-group full">
@@ -754,11 +774,11 @@
           </p>
           <div class="review-summary">
             <div class="review-summary-item">
-              <div class="review-summary-value">5.0</div>
+              <div class="review-summary-value" id="reviewSummaryAvg">—</div>
               <div class="review-summary-label">Vlerësim mesatar</div>
             </div>
             <div class="review-summary-item">
-              <div class="review-summary-value">12</div>
+              <div class="review-summary-value" id="reviewSummaryCount">0</div>
               <div class="review-summary-label">Komente të mbledhura</div>
             </div>
             <div class="review-summary-item">
@@ -1020,7 +1040,7 @@
         <h4>Mësuesit</h4>
         <ul class="footer-teacher-links">
           <li><a href="valdet-luga.html">Valdet Luga</a></li>
-          <li><a href="mirsada-kadia.html">Mirsada Kadia</a></li>
+          <li><a href="mirsada-bala.html">Mirsada Bala</a></li>
           <li><a href="roberta-naraci.html">Roberta Naraci</a></li>
           <li><a href="diana-boriqi.html">Diana Boriqi</a></li>
           <li><a href="elvira-bushati.html">Elvira Bushati</a></li>
@@ -1035,6 +1055,7 @@
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© <span id="footerYear">2026</span> <span>EduShkodër</span>. Të gjitha të drejtat e rezervuara.</p>
+      <p class="privacy-note">Përdorim Google Analytics për statistika anonime të vizitorëve. Duke vazhduar, pranoni përdorimin e cookies të nevojshme për funksionimin e faqes.</p>
       <p class="footer-copy" style="color:rgba(255,255,255,0.2);">Bërë me <span style="color:var(--orange);">♥</span> në Shkodër</p>
     </div>
   </div>
@@ -1046,8 +1067,11 @@
 </a>
 <div class="whatsapp-tooltip">Na kontaktoni!</div>
 
+<a href="#booking" class="mobile-book-cta" id="mobileBookCta">
+  <i class="fas fa-calendar-check" aria-hidden="true"></i> Rezervo Orar
+</a>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="site.js?v=20260713-2"></script>
+<script src="site.js?v=20260925-1"></script>
 </body>
 </html>

@@ -120,7 +120,7 @@ const TEACHERS = [
     instagram: 'https://www.instagram.com/libra.education/'
   },
   {
-    name: 'Mirsada Kadia',
+    name: 'Mirsada Bala',
     phone: '355694830000',
     subject: 'Gjermanisht',
     maps: 'https://www.google.com/maps/place/Universiteti+i+Shkodr%C3%ABs+%22Luigj+Gurakuqi%22/@42.0663747,19.5101781,3a,75y,302.59h,77.26t/data=!3m7!1e1!3m5!1sWjhnIF2WEkpkOPeY6XCEWw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D12.742345076382705%26panoid%3DWjhnIF2WEkpkOPeY6XCEWw%26yaw%3D302.58838241255006!7i13312!8i6656!4m6!3m5!1s0x134e00fcd146f0df:0xbee74fa0b9f6dbfa!8m2!3d42.0662237!4d19.5095856!16s%2Fm%2F0264mz5?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
@@ -248,7 +248,7 @@ function coursePageHref(course) {
 
 const TEACHER_PROFILE_PATHS = {
   'Valdet Luga': 'valdet-luga.html',
-  'Mirsada Kadia': 'mirsada-kadia.html',
+  'Mirsada Bala': 'mirsada-bala.html',
   'Roberta Naraci': 'roberta-naraci.html',
   'Diana Boriqi': 'diana-boriqi.html',
   'Elvira Bushati': 'elvira-bushati.html',
@@ -260,6 +260,27 @@ const TEACHER_PROFILE_PATHS = {
   'Valbona Vila': 'valbona-vila.html',
   'Konkursi Math Kangaroo — info lokale për Shkodër': 'konkursi-kangur-shkoder.html'
 };
+
+const TEACHER_SLUGS = Object.fromEntries(
+  Object.entries(TEACHER_PROFILE_PATHS).map(([name, file]) => [file.replace('.html', ''), name])
+);
+
+const TEACHER_FILTER_OPTIONS = [
+  { value: '', label: 'Të gjitha lëndët' },
+  { value: 'general-1-6', label: 'Të përgjithshme (1-6)' },
+  { value: 'fillore-1-5', label: 'Fillore (1-5)' },
+  { value: 'matematike', label: 'Matematikë' },
+  { value: 'anglisht', label: 'Anglisht' },
+  { value: 'gjermanisht', label: 'Gjermanisht' },
+  { value: 'italisht', label: 'Italisht' },
+  { value: 'kimi-biologji', label: 'Kimi / Biologji' },
+  { value: 'gjuhe-letersi', label: 'Gjuhë / Letërsi' },
+  { value: 'fizike', label: 'Fizikë' },
+  { value: 'konkursi-kangur', label: 'Math Kangaroo' }
+];
+
+let teacherFilterQuery = '';
+let teacherFilterCourse = '';
 
 function teacherProfileHref(teacher) {
   return TEACHER_PROFILE_PATHS[teacher.name] || '#teachers';
@@ -328,12 +349,88 @@ function renderCourseCards() {
   }).join('');
 }
 
+function teacherMatchesFilter(teacher) {
+  const query = teacherFilterQuery.trim().toLowerCase();
+  if (query) {
+    const haystack = `${teacher.name} ${teacher.subject}`.toLowerCase();
+    if (!haystack.includes(query)) return false;
+  }
+  if (teacherFilterCourse && !teacher.courseIds.includes(teacherFilterCourse)) return false;
+  return true;
+}
+
+function isKangarooTeacher(teacher) {
+  return teacher.courseIds.includes('konkursi-kangur');
+}
+
+function teacherPrimaryAction(teacher) {
+  if (teacher.phone) {
+    return `<a href="https://wa.me/${teacher.phone}" target="_blank" rel="noopener noreferrer" class="teacher-btn teacher-btn-wa">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+    </a>`;
+  }
+  if (isKangarooTeacher(teacher)) {
+    return `<a href="konkursi-kangur-shkoder.html" class="teacher-btn teacher-btn-wa">
+      <i class="fas fa-circle-info" aria-hidden="true"></i> Detaje &amp; kontakte
+    </a>`;
+  }
+  return `<a href="${buildOwnerRequestLink(teacher.name)}" target="_blank" rel="noopener noreferrer" class="teacher-btn teacher-btn-wa">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i> Kërko Kontaktin
+  </a>`;
+}
+
+function renderTeacherToolbar() {
+  const toolbar = document.getElementById('teacherToolbar');
+  if (!toolbar) return;
+
+  toolbar.innerHTML = `
+    <div class="teacher-toolbar">
+      <div class="teacher-search-wrap">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input type="search" id="teacherSearch" placeholder="Kërko mësues ose lëndë..." value="${escapeHtml(teacherFilterQuery)}" aria-label="Kërko mësues" />
+      </div>
+      <select id="teacherSubjectFilter" aria-label="Filtro sipas lëndës">
+        ${TEACHER_FILTER_OPTIONS.map(option => `
+          <option value="${option.value}" ${teacherFilterCourse === option.value ? 'selected' : ''}>${escapeHtml(option.label)}</option>
+        `).join('')}
+      </select>
+    </div>
+    <p class="teacher-filter-note" id="teacherFilterNote"></p>
+  `;
+
+  const searchInput = document.getElementById('teacherSearch');
+  const subjectFilter = document.getElementById('teacherSubjectFilter');
+
+  searchInput.addEventListener('input', () => {
+    teacherFilterQuery = searchInput.value;
+    renderTeachers();
+  });
+
+  subjectFilter.addEventListener('change', () => {
+    teacherFilterCourse = subjectFilter.value;
+    renderTeachers();
+  });
+}
+
 function renderTeachers() {
   const grid = document.getElementById('teachersGrid');
   if (!grid) return;
 
-  grid.innerHTML = TEACHERS.map((teacher, index) => `
-    <div class="teacher-card reveal ${index % 3 === 0 ? 'reveal-delay-1' : index % 3 === 1 ? 'reveal-delay-2' : 'reveal-delay-3'} ${teacher.featured ? 'featured' : ''}">
+  const filtered = TEACHERS.filter(teacherMatchesFilter);
+  const note = document.getElementById('teacherFilterNote');
+  if (note) {
+    note.textContent = filtered.length === TEACHERS.length
+      ? `${TEACHERS.length} mësues të listuar`
+      : `${filtered.length} rezultat${filtered.length === 1 ? '' : 'e'} nga ${TEACHERS.length} mësues`;
+  }
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="teacher-empty"><i class="fas fa-user-slash" aria-hidden="true"></i><p>Nuk u gjet mësues për këtë kërkim. Provoni një lëndë tjetër ose pastroni filtrin.</p></div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map((teacher, index) => `
+    <div class="teacher-card reveal visible ${index % 3 === 0 ? 'reveal-delay-1' : index % 3 === 1 ? 'reveal-delay-2' : 'reveal-delay-3'} ${teacher.featured ? 'featured' : ''}">
       ${teacher.featured ? '<div class="teacher-flag">Më i kërkuari</div>' : ''}
       <div class="teacher-avatar" style="background:${teacher.accent};">${getInitials(teacher.name)}</div>
       <div class="teacher-name">${escapeHtml(teacher.name)}</div>
@@ -341,16 +438,14 @@ function renderTeachers() {
       <div class="teacher-phone"><i class="fas fa-phone" style="color:var(--orange);margin-right:5px;font-size:0.75rem;" aria-hidden="true"></i> ${escapeHtml(formatPhone(teacher.phone))}</div>
       <div class="teacher-note">${escapeHtml(teacher.note || 'Klikoni WhatsApp ose Vendndodhja për kontakt të shpejtë.')}</div>
       <div class="teacher-actions">
-        <a href="${teacher.phone ? `https://wa.me/${teacher.phone}` : buildOwnerRequestLink(teacher.name)}" target="_blank" class="teacher-btn teacher-btn-wa">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> ${teacher.phone ? 'WhatsApp' : 'Kërko Kontaktin'}
-        </a>
+        ${teacherPrimaryAction(teacher)}
         <a href="${teacherProfileHref(teacher)}" class="teacher-btn teacher-btn-profile">
           <i class="fas fa-user" aria-hidden="true"></i> Profili
         </a>
-        <a href="${teacher.maps}" target="_blank" class="teacher-btn teacher-btn-map">
+        <a href="${teacher.maps}" target="_blank" rel="noopener noreferrer" class="teacher-btn teacher-btn-map">
           <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Vendndodhja
         </a>
-        ${teacher.instagram ? `<a href="${teacher.instagram}" target="_blank" class="teacher-btn" style="background:#e1306c;color:#fff;"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>` : ''}
+        ${teacher.instagram ? `<a href="${teacher.instagram}" target="_blank" rel="noopener noreferrer" class="teacher-btn" style="background:#e1306c;color:#fff;"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>` : ''}
       </div>
     </div>
   `).join('');
@@ -446,6 +541,10 @@ function updateBookingRouteNote() {
   }
 
   if (!selectedTeacher.phone) {
+    if (isKangarooTeacher(selectedTeacher)) {
+      note.textContent = 'Për Math Kangaroo, shikoni kontaktet e koordinatorëve në faqen e konkursit. Pyetje të përgjithshme shkojnë te krijuesi i website-it.';
+      return;
+    }
     note.textContent = `Për ${selectedTeacher.name}, kërkesa do të shkojë te krijuesi i website-it (${OWNER.displayPhone}) sepse numri direkt nuk është shtuar ende.`;
     return;
   }
@@ -500,17 +599,41 @@ function renderTeacherPicker() {
   });
 }
 
+function normalizeAlbanianPhone(value) {
+  const digits = (value || '').replace(/\D/g, '');
+  if (!digits) return '';
+  if (digits.startsWith('355') && digits.length === 12) return digits;
+  if (digits.startsWith('0') && digits.length === 10) return `355${digits.slice(1)}`;
+  if (digits.length === 9 && digits.startsWith('6')) return `355${digits}`;
+  return digits;
+}
+
 function validateForm() {
   const name = document.getElementById('studentName').value.trim();
   const course = document.getElementById('preferredCourse').value;
   const schedule = document.getElementById('schedule').value;
   const days = [...document.querySelectorAll('input[name="day"]:checked')].map(input => input.value);
   const button = document.getElementById('sendWhatsApp');
+  const phoneInput = document.getElementById('studentPhone');
+  const phoneHint = document.getElementById('studentPhoneHint');
+
+  if (phoneInput && phoneHint) {
+    const raw = phoneInput.value.trim();
+    if (!raw) {
+      phoneHint.textContent = '';
+      phoneInput.setCustomValidity('');
+    } else {
+      const normalized = normalizeAlbanianPhone(raw);
+      const valid = normalized.startsWith('355') && normalized.length === 12;
+      phoneHint.textContent = valid ? '' : 'Format i sugjeruar: +355 6X XXX XXXX';
+      phoneInput.setCustomValidity(valid ? '' : 'Numri i telefonit nuk duket i saktë.');
+    }
+  }
 
   button.disabled = !(name && course && schedule && days.length > 0 && selectedTeacher);
 }
 
-['studentName', 'preferredCourse', 'schedule', 'difficulty', 'goal'].forEach(id => {
+['studentName', 'studentPhone', 'preferredCourse', 'schedule', 'difficulty', 'goal'].forEach(id => {
   const element = document.getElementById(id);
   if (element) element.addEventListener('change', validateForm);
   if (element) element.addEventListener('input', validateForm);
@@ -694,7 +817,7 @@ const APPROVED_REVIEWS = [
 ];
 
 const starPicker = document.getElementById('starPicker');
-starPicker.querySelectorAll('i').forEach(star => {
+if (starPicker) starPicker.querySelectorAll('i').forEach(star => {
   star.addEventListener('mouseover', function() {
     const value = parseInt(this.dataset.val, 10);
     starPicker.querySelectorAll('i').forEach((item, index) => item.classList.toggle('active', index < value));
@@ -717,6 +840,7 @@ starPicker.querySelectorAll('i').forEach(star => {
 });
 
 function setReviewRating(value) {
+  if (!starPicker) return;
   reviewRating = value;
   starPicker.querySelectorAll('i').forEach((item, index) => {
     item.classList.toggle('active', index < reviewRating);
@@ -724,7 +848,24 @@ function setReviewRating(value) {
   });
 }
 
+function renderReviewSummary() {
+  const avgEl = document.getElementById('reviewSummaryAvg');
+  const countEl = document.getElementById('reviewSummaryCount');
+  if (!avgEl || !countEl) return;
+
+  const count = APPROVED_REVIEWS.length;
+  countEl.textContent = String(count);
+  if (count === 0) {
+    avgEl.textContent = '—';
+    return;
+  }
+
+  const average = APPROVED_REVIEWS.reduce((sum, review) => sum + review.rating, 0) / count;
+  avgEl.textContent = average.toFixed(1);
+}
+
 function renderReviews() {
+  renderReviewSummary();
   const list = document.getElementById('reviewsList');
   if (APPROVED_REVIEWS.length === 0) {
     list.innerHTML = '<div class="empty-reviews"><i class="fas fa-comments"></i><p>Ende nuk ka komente të publikuara. Dërgoni tuajin në WhatsApp dhe do të shtohet pasi të verifikohet.</p></div>';
@@ -821,19 +962,67 @@ Kam pranuar që komenti të shqyrtohet dhe, nëse miratohet, të publikohet në 
   successMsg.style.display = 'block';
 }
 
+function applyDeepLinkBooking() {
+  const params = new URLSearchParams(window.location.search);
+  const teacherSlug = params.get('teacher');
+  const courseSelect = document.getElementById('preferredCourse');
+  if (!teacherSlug || !TEACHER_SLUGS[teacherSlug]) return;
+
+  const teacher = TEACHERS.find(item => item.name === TEACHER_SLUGS[teacherSlug]);
+  if (!teacher) return;
+
+  selectedTeacher = teacher;
+  if (courseSelect && teacher.courseIds.length > 0) {
+    courseSelect.value = teacher.courseIds[0];
+  }
+
+  renderTeacherPicker();
+  updateBookingRouteNote();
+  validateForm();
+
+  const selectedCard = document.querySelector(`.teacher-pick-card[data-teacher="${CSS.escape(teacher.name)}"]`);
+  if (selectedCard) {
+    selectedCard.classList.add('selected');
+    selectedCard.setAttribute('aria-pressed', 'true');
+  }
+
+  if (window.location.hash === '#booking' || params.get('book') === '1') {
+    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function initMobileBookCta() {
+  const cta = document.getElementById('mobileBookCta');
+  const bookingSection = document.getElementById('booking');
+  if (!cta || !bookingSection) return;
+
+  const toggle = () => {
+    const rect = bookingSection.getBoundingClientRect();
+    const bookingVisible = rect.top < window.innerHeight * 0.55 && rect.bottom > 120;
+    cta.classList.toggle('hidden', bookingVisible);
+  };
+
+  toggle();
+  window.addEventListener('scroll', toggle, { passive: true });
+  window.addEventListener('resize', toggle);
+}
+
 renderCounts();
 renderHeroQuickCourses();
 renderCourseCards();
+renderTeacherToolbar();
 renderTeachers();
 renderCourseOptions();
 renderFooterCourses();
 renderTeacherPicker();
+applyDeepLinkBooking();
 renderReviewCourseOptions();
 renderReviews();
 renderTestimonials();
 observeReveals();
 updateBookingRouteNote();
 validateForm();
+initMobileBookCta();
 
 document.querySelectorAll('i.fas, i.fab').forEach(icon => {
   if (!icon.closest('#starPicker') && !icon.hasAttribute('aria-hidden')) {
