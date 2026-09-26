@@ -213,6 +213,8 @@ const TEACHERS = [
   }
 ];
 
+const PUBLIC_TEACHERS = TEACHERS.filter(teacher => !teacher.courseIds.includes('konkursi-kangur'));
+
 function escapeHtml(text) {
   return (text || '')
     .replace(/&/g, '&amp;')
@@ -266,7 +268,6 @@ const TEACHER_FILTER_OPTIONS = [
   { value: 'italisht', label: 'Italisht' },
   { value: 'kimi-biologji', label: 'Kimi / Biologji' },
   { value: 'gjuhe-letersi', label: 'Gjuhë / Letërsi' },
-  { value: 'konkursi-kangur', label: 'Math Kangaroo' }
 ];
 
 let teacherFilterQuery = '';
@@ -406,12 +407,12 @@ function renderTeachers() {
   const grid = document.getElementById('teachersGrid');
   if (!grid) return;
 
-  const filtered = TEACHERS.filter(teacherMatchesFilter);
+  const filtered = PUBLIC_TEACHERS.filter(teacherMatchesFilter);
   const note = document.getElementById('teacherFilterNote');
   if (note) {
-    note.textContent = filtered.length === TEACHERS.length
-      ? `${TEACHERS.length} mësues të listuar`
-      : `${filtered.length} rezultat${filtered.length === 1 ? '' : 'e'} nga ${TEACHERS.length} mësues`;
+    note.textContent = filtered.length === PUBLIC_TEACHERS.length
+      ? `${PUBLIC_TEACHERS.length} mësues të listuar`
+      : `${filtered.length} rezultat${filtered.length === 1 ? '' : 'e'} nga ${PUBLIC_TEACHERS.length} mësues`;
   }
 
   if (filtered.length === 0) {
@@ -466,7 +467,7 @@ function renderCounts() {
   const footerYear = document.getElementById('footerYear');
 
   if (courseCount) courseCount.textContent = String(COURSES.length);
-  if (teacherCount) teacherCount.textContent = String(TEACHERS.filter(teacher => !teacher.courseIds.includes('konkursi-kangur')).length);
+  if (teacherCount) teacherCount.textContent = String(PUBLIC_TEACHERS.length);
   if (footerYear) footerYear.textContent = String(new Date().getFullYear());
 }
 
