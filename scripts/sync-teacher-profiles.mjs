@@ -1,26 +1,38 @@
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-
-const profiles = [
-  { file: 'valdet-luga.html', slug: 'valdet-luga', accent: 'linear-gradient(135deg,#FF6B35,#FFD166)', phone: '+355676516773', instagram: 'https://www.instagram.com/libra.education/' },
-  { file: 'mirsada-bala.html', slug: 'mirsada-bala', accent: 'linear-gradient(135deg,#0ea5e9,#38bdf8)', phone: '+355694830000', instagram: 'https://www.instagram.com/easy.international.courses/' },
-  { file: 'roberta-naraci.html', slug: 'roberta-naraci', accent: 'linear-gradient(135deg,#38bdf8,#60a5fa)', phone: '+355674060071' },
-  { file: 'diana-boriqi.html', slug: 'diana-boriqi', accent: 'linear-gradient(135deg,#059669,#34d399)', phone: '+355673890074' },
-  { file: 'elvira-bushati.html', slug: 'elvira-bushati', accent: 'linear-gradient(135deg,#d97706,#fbbf24)', phone: '+355674061081' },
-  { file: 'frida-luani.html', slug: 'frida-luani', accent: 'linear-gradient(135deg,#f59e0b,#fcd34d)', phone: '+355683704370' },
-  { file: 'dr-bendis-hoxha.html', slug: 'dr-bendis-hoxha', accent: 'linear-gradient(135deg,#fbbf24,#fde68a)', phone: '+355692136564' },
-  { file: 'naxhija-milla.html', slug: 'naxhija-milla', accent: 'linear-gradient(135deg,#7c3aed,#a78bfa)', phone: '+355692627187' },
-  { file: 'miranda-bala.html', slug: 'miranda-bala', accent: 'linear-gradient(135deg,#dc2626,#f87171)', phone: '+355692516062', instagram: 'https://www.instagram.com/easy.international.courses/' },
-  { file: 'aferdita-bruceti.html', slug: 'aferdita-bruceti', accent: 'linear-gradient(135deg,#be185d,#f472b6)', phone: '+355697724356' },
-  { file: 'valbona-vila.html', slug: 'valbona-vila', accent: 'linear-gradient(135deg,#d97706,#fbbf24)', phone: '+355670000286' }
-];
+const require = createRequire(import.meta.url);
+const { TEACHERS, TEACHER_PROFILE_PATHS } = require('../site-data.js');
+const profiles = TEACHERS
+  .filter(teacher => !teacher.courseIds.includes('konkursi-kangur'))
+  .map(teacher => {
+    const file = TEACHER_PROFILE_PATHS[teacher.name];
+    if (!file) throw new Error(`No profile page is mapped for ${teacher.name}`);
+    if (!teacher.phone) throw new Error(`No phone is configured for ${teacher.name}`);
+    return {
+      file,
+      slug: file.replace(/\.html$/, ''),
+      accent: teacher.accent,
+      phone: `+${teacher.phone}`,
+      instagram: teacher.instagram
+    };
+  });
 
 function instagramButton(instagram) {
   if (!instagram) return '';
   return `\n            <a href="${instagram}" target="_blank" rel="noopener noreferrer" class="btn-profile" style="background:#e1306c;">📸 Instagram</a>`;
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 for (const profile of profiles) {
@@ -31,6 +43,20 @@ for (const profile of profiles) {
   }
 
   let html = fs.readFileSync(filePath, 'utf8');
+  const teacher = TEACHERS.find(item => TEACHER_PROFILE_PATHS[item.name] === profile.file);
+  const name = escapeHtml(teacher.name);
+  const subject = escapeHtml(teacher.subject);
+  const note = escapeHtml(teacher.note);
+
+  html = html.replace(
+    /(<section class="page-hero">[\s\S]*?<h1>)[\s\S]*?(<\/h1>\s*<p>)[\s\S]*?(<\/p>)/,
+    (_, beforeName, beforeSummary, afterSummary) => `${beforeName}${name}${beforeSummary}Mësime private ${subject} në Shkodër — 1 me 1, orar fleksibël.${afterSummary}`
+  );
+  html = html.replace(/<h1 itemprop="name">[\s\S]*?<\/h1>/, () => `<h1 itemprop="name">${name}</h1>`);
+  html = html.replace(/(<div class="profile-sub" itemprop="jobTitle">)[\s\S]*?(<\/div>)/, (_, before, after) => `${before}${subject}${after}`);
+  html = html.replace(/(<p[^>]*itemprop="description">)[\s\S]*?(<\/p>)/, (_, before, after) => `${before}${note}${after}`);
+  html = html.replace(/<title>[\s\S]*?<\/title>/, () => `<title>${name} - Mësues/e ${subject} në Shkodër | EduShkodër</title>`);
+  html = html.replace(/<meta property="og:title" content="[^"]*" \/>/, () => `<meta property="og:title" content="${name} - Mësues/e ${subject} në Shkodër | EduShkodër" />`);
 
   html = html.replace(
     /(<div class="profile-avatar" style="background:)[^"]+(">)/,

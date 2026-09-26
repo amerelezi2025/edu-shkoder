@@ -309,13 +309,13 @@
     .form-group input, .form-group select { padding: 11px 14px; border: 1.8px solid var(--gray-mid); border-radius: 10px; font-size: 0.9rem; color: var(--dark); background: var(--white); transition: var(--transition); outline: none; }
     .form-group input:focus, .form-group select:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,107,53,0.1); }
     .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-    .checkbox-label { display: flex; align-items: center; gap: 7px; background: var(--gray-light); border: 1.5px solid var(--gray-mid); border-radius: 8px; padding: 7px 13px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: var(--transition); user-select: none; }
+    .checkbox-label { min-height: 44px; display: flex; align-items: center; gap: 7px; background: var(--gray-light); border: 1.5px solid var(--gray-mid); border-radius: 8px; padding: 7px 13px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: var(--transition); user-select: none; }
     .checkbox-label input { accent-color: var(--orange); }
     .checkbox-label.checked { border-color: var(--orange); background: rgba(255,107,53,0.08); color: var(--orange-dark); }
 
     /* Teacher picker */
     .teacher-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px; }
-    .teacher-pick-card { border: 2px solid var(--gray-mid); border-radius: var(--radius); padding: 16px 12px; cursor: pointer; transition: var(--transition); text-align: center; position: relative; background: var(--white); }
+    .teacher-pick-card { min-height: 44px; border: 2px solid var(--gray-mid); border-radius: var(--radius); padding: 16px 12px; cursor: pointer; transition: var(--transition); text-align: center; position: relative; background: var(--white); }
     .teacher-pick-card:hover { border-color: var(--orange-light); background: rgba(255,107,53,0.03); }
     .teacher-pick-card.selected { border-color: var(--orange); background: rgba(255,107,53,0.07); box-shadow: 0 0 0 3px rgba(255,107,53,0.12); }
     .teacher-pick-card.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
@@ -468,6 +468,7 @@
       .join-layout { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
+      #booking .form-group input, #booking .form-group select { min-height: 48px; font-size: 16px; }
       h1 { font-size: 2.65rem; }
       h2 { font-size: 2rem; }
       .nav-links, .nav-cta-desktop { display: none !important; }
@@ -674,7 +675,7 @@
 
         <div class="form-group">
           <label for="studentName">Emri i Nxënësit *</label>
-          <input type="text" id="studentName" placeholder="p.sh. Ardi Marku" />
+          <input type="text" id="studentName" placeholder="p.sh. Ardi Marku" autocomplete="name" />
         </div>
         <div class="form-group">
           <label for="studentPhone">Nr. Telefonit (opsional)</label>
@@ -1071,6 +1072,7 @@
 </a>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="site.js?v=20260926-2"></script>
+<script src="site-data.js?v=20260926-1"></script>
+<script src="site.js?v=20260926-3"></script>
 </body>
 </html>
