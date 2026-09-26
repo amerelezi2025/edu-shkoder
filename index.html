@@ -15,7 +15,7 @@
 
   <!-- SEO: Title & Description -->
   <title>Mësime Private në Shkodër | EduShkodër</title>
-  <meta name="description" content="EduShkodër ofron mësime private 1 me 1 në Shkodër për matematikë, anglisht, gjermanisht, italisht, kimi, biologji, gjuhë-letërsi dhe fillore." />
+  <meta name="description" content="Mësime private 1 me 1 në Shkodër për klasat fillore dhe të mesme: matematikë, gjuhë, anglisht, gjermanisht, italisht, kimi, biologji dhe përgatitje për Math Kangaroo." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://edushkoder.com/" />
   <link rel="alternate" hreflang="sq" href="https://edushkoder.com/" />
@@ -24,7 +24,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://edushkoder.com/" />
   <meta property="og:title" content="Mësime Private në Shkodër | EduShkodër" />
-  <meta property="og:description" content="Mësime private 1 me 1 në Shkodër me mësues të zgjedhur, orare fleksibël dhe rezervim të shpejtë në WhatsApp." />
+  <meta property="og:description" content="Zgjidhni lëndën dhe mësuesin për mësime private 1 me 1 në Shkodër. Shikoni kurset dhe nisni rezervimin në WhatsApp." />
   <meta property="og:image" content="https://edushkoder.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -35,7 +35,7 @@
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mësime Private në Shkodër | EduShkodër" />
-  <meta name="twitter:description" content="Zgjidhni mësuesin, caktoni orarin dhe rezervoni shpejt në WhatsApp." />
+  <meta name="twitter:description" content="Mësime private 1 me 1 në Shkodër. Zgjidhni lëndën dhe mësuesin, pastaj nisni rezervimin në WhatsApp." />
   <meta name="twitter:image" content="https://edushkoder.com/og-image.png" />
 
   <!-- SEO: Local business and FAQ structured data -->
@@ -309,13 +309,13 @@
     .form-group input, .form-group select { padding: 11px 14px; border: 1.8px solid var(--gray-mid); border-radius: 10px; font-size: 0.9rem; color: var(--dark); background: var(--white); transition: var(--transition); outline: none; }
     .form-group input:focus, .form-group select:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,107,53,0.1); }
     .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-    .checkbox-label { min-height: 44px; display: flex; align-items: center; gap: 7px; background: var(--gray-light); border: 1.5px solid var(--gray-mid); border-radius: 8px; padding: 7px 13px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: var(--transition); user-select: none; }
+    .checkbox-label { min-height: 44px; display: flex; align-items: center; gap: 7px; background: var(--gray-light); border: 1.5px solid var(--gray-mid); border-radius: 8px; padding: 7px 13px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: var(--transition); user-select: none; touch-action: manipulation; }
     .checkbox-label input { accent-color: var(--orange); }
     .checkbox-label.checked { border-color: var(--orange); background: rgba(255,107,53,0.08); color: var(--orange-dark); }
 
     /* Teacher picker */
     .teacher-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px; }
-    .teacher-pick-card { min-height: 44px; border: 2px solid var(--gray-mid); border-radius: var(--radius); padding: 16px 12px; cursor: pointer; transition: var(--transition); text-align: center; position: relative; background: var(--white); }
+    .teacher-pick-card { min-height: 48px; border: 2px solid var(--gray-mid); border-radius: var(--radius); padding: 16px 12px; cursor: pointer; transition: var(--transition); text-align: center; position: relative; background: var(--white); touch-action: manipulation; }
     .teacher-pick-card:hover { border-color: var(--orange-light); background: rgba(255,107,53,0.03); }
     .teacher-pick-card.selected { border-color: var(--orange); background: rgba(255,107,53,0.07); box-shadow: 0 0 0 3px rgba(255,107,53,0.12); }
     .teacher-pick-card.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
@@ -325,7 +325,7 @@
     .tp-check { position: absolute; top: 8px; right: 8px; width: 20px; height: 20px; border-radius: 50%; background: var(--orange); display: none; align-items: center; justify-content: center; color: white; font-size: 0.65rem; }
     .teacher-pick-card.selected .tp-check { display: flex; }
 
-    .btn-submit-wa { width: 100%; background: #15803d; color: var(--white); border: none; border-radius: var(--radius); padding: 15px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.02rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(37,211,102,0.32); margin-top: 8px; }
+    .btn-submit-wa { width: 100%; min-height: 52px; background: #15803d; color: var(--white); border: none; border-radius: var(--radius); padding: 15px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.02rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(37,211,102,0.32); margin-top: 8px; touch-action: manipulation; }
     .btn-submit-wa:hover { background: #166534; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.4); }
     .btn-submit-wa:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
     .form-note { font-size: 0.78rem; color: var(--gray); text-align: center; margin-top: 10px; }
@@ -676,17 +676,17 @@
 
         <div class="form-group">
           <label for="studentName">Emri i Nxënësit *</label>
-          <input type="text" id="studentName" placeholder="p.sh. Ardi Marku" autocomplete="name" />
+          <input type="text" id="studentName" placeholder="p.sh. Ardi Marku" autocomplete="name" required />
         </div>
         <div class="form-group">
           <label for="studentPhone">Nr. Telefonit (opsional)</label>
-          <input type="tel" id="studentPhone" placeholder="+355 6X XXX XXXX" inputmode="tel" autocomplete="tel" />
+          <input type="tel" id="studentPhone" placeholder="+355 6X XXX XXXX" inputmode="tel" autocomplete="tel" aria-describedby="studentPhoneHint" aria-invalid="false" />
           <div class="form-hint" id="studentPhoneHint" aria-live="polite"></div>
         </div>
 
         <div class="form-group full">
           <label for="preferredCourse">Kursi i Preferuar *</label>
-          <select id="preferredCourse"></select>
+          <select id="preferredCourse" required></select>
         </div>
 
         <div class="form-group full">
@@ -708,7 +708,7 @@
 
         <div class="form-group full">
           <label id="daysGroupLabel">Ditët e Preferuara *</label>
-          <div class="checkbox-group" id="daysGroup" role="group" aria-labelledby="daysGroupLabel">
+          <div class="checkbox-group" id="daysGroup" role="group" aria-labelledby="daysGroupLabel" aria-required="true">
             <label class="checkbox-label"><input type="checkbox" name="day" value="Hënë" /> Hënë</label>
             <label class="checkbox-label"><input type="checkbox" name="day" value="Martë" /> Martë</label>
             <label class="checkbox-label"><input type="checkbox" name="day" value="Mërkurë" /> Mërkurë</label>
@@ -719,7 +719,7 @@
 
         <div class="form-group full">
           <label for="schedule">Orari i Preferuar *</label>
-          <select id="schedule">
+          <select id="schedule" required>
             <option value="" disabled selected>— Zgjidhni —</option>
             <option>Paradite (08:00 – 13:00)</option>
             <option>Pasdite (14:00 – 19:00)</option>
@@ -729,12 +729,13 @@
 
         <div class="form-group full">
           <label id="teacherPickerLabel" style="margin-bottom:10px;">Zgjidhni Mësuesin/en *</label>
-          <div class="teacher-picker" id="teacherPicker" role="group" aria-labelledby="teacherPickerLabel"></div>
+          <div class="teacher-picker" id="teacherPicker" role="group" aria-labelledby="teacherPickerLabel" aria-required="true"></div>
           <div class="booking-route-note" id="bookingRouteNote">Kërkesa do të dërgohet direkt te mësuesi/ja që zgjidhni. Nëse mungon numri direkt, kërkesa shkon te krijuesi i website-it.</div>
         </div>
 
         <div class="full">
-          <button class="btn-submit-wa" id="sendWhatsApp" disabled onclick="sendToWhatsApp()">
+          <p class="form-note" id="bookingRequirements">Plotësoni fushat me * dhe zgjidhni një mësues për të aktivizuar butonin. Numri i telefonit është opsional.</p>
+          <button class="btn-submit-wa" id="sendWhatsApp" disabled aria-describedby="bookingRequirements" onclick="sendToWhatsApp()">
             <i class="fab fa-whatsapp" style="font-size:1.3rem;" aria-hidden="true"></i> Dërgo Kërkesën në WhatsApp
           </button>
           <p class="form-note"><i class="fas fa-lock" style="margin-right:4px;" aria-hidden="true"></i> Kërkesa dërgohet direkt tek mësuesi/ja që zgjidhni.</p>

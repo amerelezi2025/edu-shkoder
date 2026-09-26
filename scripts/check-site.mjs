@@ -117,6 +117,25 @@ if (teacherFallback !== publicTeachers.length) fail(`Homepage teacher fallback i
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
+  const isRedirect = /<meta\s+http-equiv=["']refresh|location\.replace\(/i.test(html);
+  if (isRedirect) {
+    if (!/<meta\s+name=["']robots["']\s+content=["']noindex,\s*follow["']/i.test(html)) {
+      fail(`${file} is a redirect page and should be excluded from search indexing.`);
+    }
+  } else {
+    if (!/<title>\s*[^<]+<\/title>/i.test(html)) fail(`${file} is missing a page title.`);
+    if (!/<meta\s+name=["']description["']\s+content=["'][^"']{40,}["']/i.test(html)) {
+      fail(`${file} is missing a useful search description.`);
+    }
+    if (!/<link\s+rel=["']canonical["']\s+href=["']https:\/\/edushkoder\.com\//i.test(html)) {
+      fail(`${file} is missing its canonical URL.`);
+    }
+    for (const property of ['og:title', 'og:description', 'og:url', 'og:image']) {
+      if (!new RegExp(`<meta\\s+property=["']${property}["']\\s+content=["'][^"']+`, 'i').test(html)) {
+        fail(`${file} is missing its ${property} share preview.`);
+      }
+    }
+  }
   for (const match of html.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)) {
     checkReference(file, match[1]);
   }

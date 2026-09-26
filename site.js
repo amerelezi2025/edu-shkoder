@@ -390,6 +390,7 @@ function validateForm() {
   const button = document.getElementById('sendWhatsApp');
   const phoneInput = document.getElementById('studentPhone');
   const phoneHint = document.getElementById('studentPhoneHint');
+  let phoneValid = true;
 
   if (phoneInput && phoneHint) {
     const raw = phoneInput.value.trim();
@@ -399,12 +400,15 @@ function validateForm() {
     } else {
       const normalized = normalizeAlbanianPhone(raw);
       const valid = normalized.startsWith('355') && normalized.length === 12;
+      phoneValid = valid;
       phoneHint.textContent = valid ? '' : 'Format i sugjeruar: +355 6X XXX XXXX';
+      phoneInput.setAttribute('aria-invalid', valid ? 'false' : 'true');
       phoneInput.setCustomValidity(valid ? '' : 'Numri i telefonit nuk duket i saktë.');
     }
+    if (!phoneInput.value.trim()) phoneInput.setAttribute('aria-invalid', 'false');
   }
 
-  button.disabled = !(name && course && schedule && days.length > 0 && selectedTeacher);
+  button.disabled = !(name && course && schedule && days.length > 0 && selectedTeacher && phoneValid);
 }
 
 ['studentName', 'studentPhone', 'preferredCourse', 'schedule', 'difficulty', 'goal'].forEach(id => {
