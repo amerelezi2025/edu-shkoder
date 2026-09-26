@@ -21,14 +21,13 @@ Service area:
 Shkoder, Albania
 
 Business description:
-EduShkodër ofron mësime private 1 me 1 në Shkodër me mësues të zgjedhur për matematikë, anglisht, gjermanisht, italisht, fizikë, kimi, biologji, gjuhë shqipe dhe letërsi. Nxënësit dhe prindërit mund të zgjedhin mësuesin, të caktojnë orarin dhe të kontaktojnë direkt në WhatsApp për mësime fleksibël dhe mbështetje të personalizuar.
+EduShkodër ofron mësime private 1 me 1 në Shkodër me mësues të zgjedhur për matematikë, anglisht, gjermanisht, italisht, kimi, biologji, gjuhë shqipe dhe letërsi. Nxënësit dhe prindërit mund të zgjedhin mësuesin, të caktojnë orarin dhe të kontaktojnë direkt në WhatsApp për mësime fleksibël dhe mbështetje të personalizuar.
 
 Services to add:
 Mësime private matematikë
 Mësime private anglisht
 Mësime private gjermanisht
 Mësime private italisht
-Mësime private fizikë
 Mësime private kimi dhe biologji
 Mësime private gjuhë shqipe dhe letërsi
 Mësime për fillore klasa 1-5

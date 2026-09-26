@@ -88,15 +88,6 @@ const COURSES = [
     meta: ['1 mësuese', '1 me 1', 'Shkodër']
   },
   {
-    id: 'fizike',
-    name: 'Fizikë',
-    category: 'Shkenca',
-    icon: 'fa-bolt',
-    gradient: 'linear-gradient(135deg,#2563eb,#60a5fa)',
-    description: 'Mësime individuale në fizikë për sqarimin e formulave, ushtrimeve dhe temave bazë të lëndës.',
-    meta: ['0 mësues', '1 me 1', 'Shkodër']
-  },
-  {
     id: 'konkursi-kangur',
     name: 'Konkursi Math Kangaroo — Shkodër',
     category: 'Kurse të veçanta',
@@ -275,7 +266,6 @@ const TEACHER_FILTER_OPTIONS = [
   { value: 'italisht', label: 'Italisht' },
   { value: 'kimi-biologji', label: 'Kimi / Biologji' },
   { value: 'gjuhe-letersi', label: 'Gjuhë / Letërsi' },
-  { value: 'fizike', label: 'Fizikë' },
   { value: 'konkursi-kangur', label: 'Math Kangaroo' }
 ];
 
