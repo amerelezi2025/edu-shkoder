@@ -40,7 +40,7 @@ const COURSES = [
     icon: 'fa-square-root-alt',
     gradient: 'linear-gradient(135deg,#d97706,#fbbf24)',
     description: 'Orë private në matematikë për sqarimin e temave, ushtrimeve dhe përforcimin e bazës në nivele të ndryshme shkollore.',
-    meta: ['3 mësuese', '1 me 1', 'Shkodër']
+    meta: ['4 mësuese', '1 me 1', 'Shkodër']
   },
   {
     id: 'anglisht',
@@ -76,7 +76,7 @@ const COURSES = [
     icon: 'fa-flask',
     gradient: 'linear-gradient(135deg,#7c3aed,#a78bfa)',
     description: 'Mbështetje individuale në kimi dhe biologji. Në listë është shënuar edhe mësuesja që jep vetëm kimi.',
-    meta: ['2 mësuese', '1 me 1', 'Shkodër']
+    meta: ['1 mësuese', '1 me 1', 'Shkodër']
   },
   {
     id: 'gjuhe-letersi',
@@ -85,7 +85,7 @@ const COURSES = [
     icon: 'fa-book',
     gradient: 'linear-gradient(135deg,#be185d,#f472b6)',
     description: 'Orë private për gjuhë shqipe dhe letërsi me fokus te kuptimi i tekstit, analiza dhe përmirësimi i shkrimit.',
-    meta: ['2 mësuese', '1 me 1', 'Shkodër']
+    meta: ['1 mësuese', '1 me 1', 'Shkodër']
   },
   {
     id: 'fizike',
@@ -94,7 +94,7 @@ const COURSES = [
     icon: 'fa-bolt',
     gradient: 'linear-gradient(135deg,#2563eb,#60a5fa)',
     description: 'Mësime individuale në fizikë për sqarimin e formulave, ushtrimeve dhe temave bazë të lëndës.',
-    meta: ['1 mësuese', '1 me 1', 'Shkodër']
+    meta: ['0 mësues', '1 me 1', 'Shkodër']
   },
   {
     id: 'konkursi-kangur',
