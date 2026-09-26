@@ -466,7 +466,7 @@ function renderCounts() {
   const footerYear = document.getElementById('footerYear');
 
   if (courseCount) courseCount.textContent = String(COURSES.length);
-  if (teacherCount) teacherCount.textContent = String(TEACHERS.length);
+  if (teacherCount) teacherCount.textContent = String(TEACHERS.filter(teacher => !teacher.courseIds.includes('konkursi-kangur')).length);
   if (footerYear) footerYear.textContent = String(new Date().getFullYear());
 }
 
