@@ -145,7 +145,7 @@ const TEACHERS = [
   },
   {
     name: 'Dr Bendis Hoxha',
-    phone: '355692136564',
+    phone: '355675605622',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Rruga+Europa,+Shkod%C3%ABr,+Albania/@42.0769808,19.5127879,17z/data=!3m1!4b1!4m6!3m5!1s0x134e00f4011c4b5f:0xb8230d8b5e825604!8m2!3d42.0769808!4d19.5153628!16s%2Fg%2F1th548l6?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['matematike'],
@@ -182,7 +182,7 @@ const TEACHERS = [
   },
   {
     name: 'Valbona Vila',
-    phone: '355670000286',
+    phone: '355674060286',
     subject: 'Matematikë',
     maps: 'https://www.google.com/maps/place/Parruce,+Shkod%C3%ABr,+Albania/@42.0655949,19.5093466,3a,75y,327.06h,109.41t/data=!3m7!1e1!3m5!1sXu5Y-dsqOXnLzLAq_C3jRg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.407779314115274%26panoid%3DXu5Y-dsqOXnLzLAq_C3jRg%26yaw%3D327.0599634022138!7i13312!8i6656!4m6!3m5!1s0x134e00fd333cee93:0xf7dd6cb6c1a156d2!8m2!3d42.0649077!4d19.5095779!16s%2Fg%2F1tnpbq4n?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D',
     courseIds: ['matematike'],
