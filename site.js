@@ -797,7 +797,7 @@ applyDeepLinkBooking();
 renderReviewCourseOptions();
 renderReviews();
 renderTestimonials();
-observeReveals();
+
 updateBookingRouteNote();
 validateForm();
 initMobileBookCta();
