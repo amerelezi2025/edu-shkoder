@@ -108,7 +108,6 @@ function renderCourseCards() {
       <div class="course-card-top ${course.featured ? 'has-spotlight' : ''}">
         ${course.featured ? `<span class="course-spotlight">${escapeHtml(course.featuredLabel || 'Më e kërkuar')}</span>` : ''}
         <span class="course-category-label">${escapeHtml(course.category)}</span>
-        <div class="course-icon-wrap" style="background:${course.gradient};"><i class="fas ${course.icon}" aria-hidden="true"></i></div>
         <h3>${escapeHtml(course.name)}</h3>
       </div>
       <div class="course-card-body">
